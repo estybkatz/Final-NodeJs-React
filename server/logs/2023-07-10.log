@@ -1,0 +1,148 @@
+Timestamp: 2023-07-10T08:01:41.309Z
+Status Code: 400
+Error: ValidationError: The phone number must start with 0 and contain only numbers. You can put - after the third digit and it must contain 7-12 digits. "address" is required. "state" is not allowed. "adress" is not allowed
+
+Timestamp: 2023-07-10T08:46:09.138Z
+Status Code: 400
+Error: ValidationError: the password should be supper protected, this mean that its must contain an uppercase letter and a lowercase letter, and a number, and must be atleast of size 8. "image.url" is required. "image.alt" is required. "address.state" is required. "address.zipCode" is not allowed. "state" is not allowed
+
+Timestamp: 2023-07-10T09:02:00.630Z
+Status Code: 400
+Error: ValidationError: the password should be supper protected, this mean that its must contain an uppercase letter and a lowercase letter, and a number, and must be atleast of size 8. "image.url" is required. "image.alt" is required. "address.zipCode" is not allowed
+
+Timestamp: 2023-07-10T09:06:20.095Z
+Status Code: 400
+Error: ValidationError: the password should be supper protected, this mean that its must contain an uppercase letter and a lowercase letter, and a number, and must be atleast of size 8
+
+Timestamp: 2023-07-10T09:31:52.187Z
+Status Code: 400
+Error: MongoServerError: E11000 duplicate key error collection: bizcarddb.users index: email_1 dup key: { email: "avi.rosenfeld2@avi.com" }
+
+Timestamp: 2023-07-10T09:40:55.857Z
+Status Code: 400
+Error: ValidationError: "address.houseNumber" must be a number
+
+Timestamp: 2023-07-10T09:44:38.064Z
+Status Code: 401
+Error: ValidationError: the password should be supper protected, this mean that its must contain an uppercase letter and a lowercase letter, and a number, and must be atleast of size 8
+
+Timestamp: 2023-07-10T18:36:47.595Z
+Status Code: 401
+Error: invalid email and/or password
+
+Timestamp: 2023-07-10T18:37:49.686Z
+Status Code: 401
+Error: invalid email and/or password
+
+Timestamp: 2023-07-10T18:38:02.680Z
+Status Code: 401
+Error: invalid email and/or password
+
+Timestamp: 2023-07-10T18:38:58.108Z
+Status Code: 400
+Error: ValidationError: "address.houseNumber" must be a number
+
+Timestamp: 2023-07-10T19:12:20.401Z
+Status Code: 401
+Error: User does not exists
+
+Timestamp: 2023-07-10T19:13:40.127Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T19:14:19.141Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T19:34:33.317Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T19:36:22.437Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T19:36:25.764Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T19:41:39.963Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T19:43:36.255Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T19:57:38.564Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T19:57:49.684Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T19:58:52.791Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:24:08.439Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:28:52.862Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:29:20.399Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:29:55.519Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:38:47.664Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:41:04.978Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:44:42.762Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:46:07.133Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:46:08.147Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:46:18.327Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:49:12.946Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:49:24.637Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:51:55.496Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-07-10T20:55:02.494Z
+Status Code: 401
+Error: User does not exists
+
+Timestamp: 2023-07-10T20:55:17.463Z
+Status Code: 401
+Error: invalid email and/or password
+

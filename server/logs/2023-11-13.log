@@ -1,0 +1,24 @@
+Timestamp: 2023-11-13T21:18:12.372Z
+Status Code: 401
+Error: invalid token
+
+Timestamp: 2023-11-13T21:18:17.363Z
+Status Code: 401
+Error: invalid token
+
+Timestamp: 2023-11-13T21:18:23.261Z
+Status Code: 400
+Error: undefined
+
+Timestamp: 2023-11-13T21:18:28.634Z
+Status Code: 401
+Error: invalid token
+
+Timestamp: 2023-11-13T21:18:49.110Z
+Status Code: 401
+Error: invalid token
+
+Timestamp: 2023-11-13T21:39:01.331Z
+Status Code: 400
+Error: undefined
+

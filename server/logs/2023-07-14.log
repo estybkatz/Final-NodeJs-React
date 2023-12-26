@@ -1,0 +1,16 @@
+Timestamp: 2023-07-13T21:01:54.820Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-07-13T21:05:25.343Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-13T21:05:30.739Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-13T21:08:17.035Z
+Status Code: 500
+Error: TypeError: Cannot read properties of undefined (reading '_id')
+

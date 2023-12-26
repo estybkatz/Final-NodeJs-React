@@ -1,0 +1,89 @@
+const Joi = require("joi");
+
+const createCardSchema = Joi.object({
+  // title: Joi.string().min(2).max(256).required(),
+  // subTitle: Joi.string().min(2).max(256).required(),
+  // description: Joi.string().min(2).max(1024).required(),
+  // phone: Joi.string()
+  //   .regex(new RegExp(/0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/))
+  //   .required()
+  //   .messages({
+  //     "string.pattern.base":
+  //       "The phone number must start with 0 and contain only numbers. You can put - after the third digit, and it must contain 7-12 digits",
+  //   }),
+  // email: Joi.string()
+  //   .regex(
+  //     new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
+  //   )
+  //   .required()
+  //   .messages({
+  //     "string.pattern.base":
+  //       "The email structure is incorrect, the email must contain English letters and @ for example A@gmail.com",
+  //   }),
+  // web: Joi.string()
+  //   .regex(
+  //     new RegExp(
+  //       /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/
+  //     )
+  //   )
+  //   .allow("")
+  //   .required()
+  //   .messages({
+  //     "string.pattern.base":
+  //       "The address must start with http// and contain letters and numbers",
+  //   }),
+  // image: Joi.object()
+  //   .keys({
+  //     url: Joi.string()
+  //       .regex(
+  //         new RegExp(
+  //           /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/
+  //         )
+  //       )
+  //       .allow("")
+  //       .required()
+  //       .messages({
+  //         "string.pattern.base":
+  //           "The address must start with http// and contain letters and numbers",
+  //       }),
+  //     alt: Joi.string().min(2).max(256).allow("").required(),
+  //   })
+  //   .required(),
+  // address: Joi.object()
+  //   .keys({
+  //     state: Joi.string().min(2).max(256).allow("").required(),
+  //     country: Joi.string().min(2).max(256).required(),
+  //     city: Joi.string().min(2).max(256).required(),
+  //     street: Joi.string().min(2).max(256).required(),
+  //     houseNumber: Joi.number().min(1).required(),
+  //     zip: Joi.number().allow(0).required(),
+  //   })
+  //   .required(),
+  // bizNumber: Joi.number().min(1000000).max(9999999).allow(""),
+  // user_id: Joi.string().hex().length(24),
+  firstName: Joi.string().min(2).max(256).required(),
+  lastName: Joi.string().min(2).max(256).required(),
+  phone: Joi.string().min(9).max(14).required(),
+  email: Joi.string()
+    .min(6)
+    .max(256)
+    .required()
+    .email({ tlds: { allow: false } }),
+  ReceptionDateAtTheOffice: Joi.string().min(6).max(14).required(),
+  clubMember: Joi.boolean(),
+  BusinessDescription: Joi.string().min(2).max(1024).required(),
+  country: Joi.string().min(2).max(256).allow(""),
+  city: Joi.string().min(2).max(256).required(),
+  street: Joi.string().min(2).max(256).required(),
+  houseNumber: Joi.string().min(1).max(256).required(),
+  zip: Joi.number().min(1).max(99999999).allow(""),
+  user_id: Joi.string().hex().length(24),
+});
+
+const validateCardSchema = (userInput) => {
+  return createCardSchema.validateAsync(userInput, { abortEarly: false });
+};
+
+module.exports = {
+  validateCardSchema,
+};

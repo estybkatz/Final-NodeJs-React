@@ -1,0 +1,80 @@
+Timestamp: 2023-11-26T21:09:39.691Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-11-26T21:10:01.857Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-11-26T21:12:30.784Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-11-26T21:20:54.670Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-11-26T21:21:03.811Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-11-26T21:22:03.663Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-11-26T21:22:12.086Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-11-26T21:23:28.661Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-11-26T21:23:37.010Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-11-26T21:26:18.470Z
+Status Code: 400
+Error: ValidationError: "task" is required
+
+Timestamp: 2023-11-26T21:26:22.937Z
+Status Code: 400
+Error: ValidationError: "task" is required
+
+Timestamp: 2023-11-26T21:26:33.794Z
+Status Code: 400
+Error: ValidationError: "task" is required
+
+Timestamp: 2023-11-26T21:36:40.922Z
+Status Code: 400
+Error: ValidationError: "task" is required
+
+Timestamp: 2023-11-26T21:37:59.665Z
+Status Code: 400
+Error: ValidationError: "task" is required
+
+Timestamp: 2023-11-26T21:38:11.597Z
+Status Code: 400
+Error: ValidationError: "task" is required
+
+Timestamp: 2023-11-26T21:43:26.521Z
+Status Code: 400
+Error: ValidationError: "task" is required
+
+Timestamp: 2023-11-26T21:45:47.043Z
+Status Code: 400
+Error: ValidationError: "task" is required
+
+Timestamp: 2023-11-26T21:51:17.490Z
+Status Code: 400
+Error: ValidationError: "task" is required
+
+Timestamp: 2023-11-26T21:58:50.385Z
+Status Code: 400
+Error: TypeError: Cannot read properties of undefined (reading 'params')
+
+Timestamp: 2023-11-26T21:59:11.577Z
+Status Code: 400
+Error: TypeError: Cannot read properties of undefined (reading 'params')
+

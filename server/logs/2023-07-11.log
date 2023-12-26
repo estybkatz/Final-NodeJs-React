@@ -1,0 +1,36 @@
+Timestamp: 2023-07-10T21:03:05.518Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-11T07:58:55.174Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-11T19:08:47.984Z
+Status Code: 400
+Error: ValidationError: "title" is required. "subTitle" is required. "description" is required. "web" is required. "image" is required. "address" is required. "firstName" is not allowed. "lastName" is not allowed. "ReceptionDateAtTheOffice" is not allowed. "BusinessDescription" is not allowed. "country" is not allowed. "city" is not allowed. "street" is not allowed. "houseNumber" is not allowed. "zip" is not allowed. "clubMember" is not allowed
+
+Timestamp: 2023-07-11T19:09:51.363Z
+Status Code: 400
+Error: ValidationError: "title" is required. "subTitle" is required. "description" is required. "web" is required. "image" is required. "address" is required. "firstName" is not allowed. "lastName" is not allowed. "ReceptionDateAtTheOffice" is not allowed. "BusinessDescription" is not allowed. "country" is not allowed. "city" is not allowed. "street" is not allowed. "houseNumber" is not allowed. "zip" is not allowed. "clubMember" is not allowed
+
+Timestamp: 2023-07-11T19:20:42.127Z
+Status Code: 400
+Error: ValidationError: "title" is required. "subTitle" is required. "description" is required. The phone number must start with 0 and contain only numbers. You can put - after the third digit, and it must contain 7-12 digits. "web" is required. "image" is required. "address" is required. "firstName" is not allowed. "lastName" is not allowed. "ReceptionDateAtTheOffice" is not allowed. "BusinessDescription" is not allowed. "country" is not allowed. "city" is not allowed. "street" is not allowed. "houseNumber" is not allowed. "zip" is not allowed. "clubMember" is not allowed
+
+Timestamp: 2023-07-11T19:40:40.370Z
+Status Code: 400
+Error: TypeError: Cannot read properties of undefined (reading 'state')
+
+Timestamp: 2023-07-11T19:41:35.809Z
+Status Code: 400
+Error: TypeError: Cannot read properties of undefined (reading 'state')
+
+Timestamp: 2023-07-11T20:10:12.846Z
+Status Code: 400
+Error: TypeError: Cannot read properties of undefined (reading 'state')
+
+Timestamp: 2023-07-11T20:46:28.001Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+

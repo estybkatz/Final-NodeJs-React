@@ -1,0 +1,8 @@
+Timestamp: 2023-07-16T09:11:44.192Z
+Status Code: 400
+Error: MongoServerError: E11000 duplicate key error collection: bizcarddb.cards index: email_1 dup key: { email: "tamar2@gmail.com" }
+
+Timestamp: 2023-07-16T09:26:09.408Z
+Status Code: 400
+Error: TypeError: Cannot read properties of undefined (reading 'state')
+

@@ -1,0 +1,100 @@
+Timestamp: 2023-07-29T23:22:19.664Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-29T23:23:26.211Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-29T23:24:41.938Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-29T23:27:06.362Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-29T23:27:34.098Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-29T23:27:36.004Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-29T23:35:41.229Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-30T18:23:57.310Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-30T18:26:21.330Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-30T18:42:31.649Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-30T18:43:50.608Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-30T18:44:28.629Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-07-30T20:16:11.993Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:27:48.957Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:29:30.962Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:29:45.963Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:30:31.957Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:31:06.959Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:31:24.017Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:42:00.963Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:42:08.740Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:42:44.861Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:43:50.607Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:44:27.921Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-30T20:45:33.874Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+

@@ -1,0 +1,132 @@
+Timestamp: 2023-07-12T08:48:29.296Z
+Status Code: 400
+Error: TypeError: Cannot read properties of undefined (reading 'state')
+
+Timestamp: 2023-07-12T08:54:57.389Z
+Status Code: 400
+Error: ValidationError: country: Path `country` (``) is shorter than the minimum allowed length (2).
+
+Timestamp: 2023-07-12T09:09:51.670Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T10:50:30.644Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T10:50:39.358Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T12:27:46.752Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T13:38:07.721Z
+Status Code: 500
+Error: undefined
+
+Timestamp: 2023-07-12T13:38:45.811Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T13:47:18.535Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T13:50:55.572Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T13:56:21.056Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T13:59:48.630Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T14:17:21.513Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T14:17:47.514Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T14:18:13.201Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T14:31:43.629Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T16:34:19.771Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T16:42:19.917Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T18:46:19.866Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T19:02:38.529Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T19:05:54.257Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T19:10:44.505Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T19:12:08.107Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T19:14:04.829Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T19:14:30.770Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T19:16:28.613Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T20:27:03.874Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T20:28:54.685Z
+Status Code: 400
+Error: ValidationError: "value" must only contain hexadecimal characters
+
+Timestamp: 2023-07-12T20:29:32.732Z
+Status Code: 400
+Error: ValidationError: "value" must only contain hexadecimal characters
+
+Timestamp: 2023-07-12T20:29:36.539Z
+Status Code: 400
+Error: ValidationError: "value" must only contain hexadecimal characters
+
+Timestamp: 2023-07-12T20:29:56.755Z
+Status Code: 400
+Error: CastError: Cast to ObjectId failed for value "fav-cards" (type string) at path "_id" for model "cards"
+
+Timestamp: 2023-07-12T20:34:20.417Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+
+Timestamp: 2023-07-12T20:35:57.056Z
+Status Code: 400
+Error: ValidationError: "value" length must be 24 characters long
+

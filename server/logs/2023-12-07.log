@@ -1,0 +1,24 @@
+;Timestamp: 2023-12-07T10:00:23.752Z
+Status Code: 400
+Error: MongooseError: Invalid update pipeline operator: "_id"
+
+Timestamp: 2023-12-07T10:15:17.734Z
+Status Code: 400
+Error: MongooseError: Invalid update pipeline operator: "_id"
+
+Timestamp: 2023-12-07T10:21:18.890Z
+Status Code: 400
+Error: MongooseError: Invalid update pipeline operator: "_id"
+
+Timestamp: 2023-12-07T10:31:44.524Z
+Status Code: 400
+Error: MongooseError: Invalid update pipeline operator: "_id"
+
+Timestamp: 2023-12-07T10:58:15.212Z
+Status Code: 400
+Error: MongooseError: Invalid update pipeline operator: "_id"
+
+Timestamp: 2023-12-07T10:59:29.638Z
+Status Code: 400
+Error: MongooseError: Invalid update pipeline operator: "_id"
+

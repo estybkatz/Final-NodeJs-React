@@ -1,0 +1,4 @@
+Timestamp: 2023-11-22T12:25:17.838Z
+Status Code: 400
+Error: ValidationError: "lastDateToDo" length must be at least 6 characters long
+
