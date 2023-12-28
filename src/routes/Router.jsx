@@ -89,12 +89,10 @@ const Router = () => {
         path={ROUTES.MOREINFORMATIOMPAGE}
         element={<MoreInformationPage />}
       />
-
       <Route
         path={ROUTES.LOGOUT}
         element={<ProtectedRoute element={<LogoutPage />} />}
       />
-
       <Route
         path="/edit/:id"
         element={
@@ -105,9 +103,7 @@ const Router = () => {
           />
         }
       />
-
       <Route path="/MInfo/:id" element={<MoreInformationPage />} />
-
       <Route
         path={ROUTES.PROFILE}
         element={<ProtectedRoute element={<ProfilePage />} />}
@@ -138,8 +134,9 @@ const Router = () => {
         <Route path="tasks" element={<RP1 />} />
         {/* <Route path="worker/:id" element={<WorkerPrivtePage />} />
         <Route path="costumer/:id" element={<CostumerPrivtePage />} /> */}
-        {/* <Route path="RP2" element={<RP2 />} /> */}
+        {/* <Route path="RP2" element={<RP2 />} />  */}
       </Route>
+
       <Route path="*" element={<h1>404</h1>} />
     </Routes>
   );
