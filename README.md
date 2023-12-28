@@ -1,74 +1,66 @@
-# Getting Started with Create React App
+# Worker Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Worker Management System project! This project is a full-stack application with a Node.js server handling three MongoDB databases for workers, tasks, and customers. The React frontend provides CRUD operations for workers and a management interface for admins.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Getting Started
+
+To get started with the Worker Management System, follow these instructions.
+
+### Prerequisites
+
+Make sure you have the following software installed:
+
+- Node.js
+- npm (Node Package Manager)
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Usage
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To use the Worker Management System, you need to run both the server and the client.
 
-### `npm test`
+Start the server:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# From the root directory
 
-### `npm run build`
+cd server
+npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The server should be running at http://localhost:8181.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Start the React frontend:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# From the root directory
 
-### `npm run eject`
+npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The React app should be accessible at http://localhost:3000.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Now, you have both the server and the client running, and you can interact with the Worker Management System.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The project is structured as follows:
 
-## Learn More
+### Worker Management System :
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+React Frontend
+Node.js Server
+Business logic for CRUD operations
+MongoDB models for workers, tasks, and customers
+Express.js routes for API endpoints
+gitignore
+package.json
+README.md
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-### Link to slides
-
-[Click here](https://docs.google.com/presentation/d/1Nof_WWcg-Tg_jncJvnNKR7JJ9GIfZ7U-kgOvqQzeKj8/edit?usp=sharing)
+## Installation

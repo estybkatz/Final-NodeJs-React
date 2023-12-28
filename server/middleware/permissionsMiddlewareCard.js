@@ -33,6 +33,7 @@ const permissionsMiddleware = (isBiz, isAdmin, isOwner) => {
   return (req, res, next) => {
     //console.log(req.userData);
     if (!req.userData.isBusiness) {
+      console.log(req.userData);
       logErrorToFile("must provide userData", 401);
       throw new CustomError("must provide userData");
     }

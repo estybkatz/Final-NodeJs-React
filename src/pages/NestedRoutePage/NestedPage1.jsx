@@ -84,7 +84,7 @@ const NestedPage1 = () => {
     "phone",
     "email",
     "address",
-    "isAdmin",
+    "is Admin",
     "link to tasks",
   ];
   return (

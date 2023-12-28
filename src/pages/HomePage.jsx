@@ -6,6 +6,9 @@ import {
   TableBody,
   TableCell,
   Typography,
+  TableHead,
+  Table,
+  TableRow,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +25,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import TableRowComponent from "../components/TableRowComponent";
 import TableRowsComponent from "../components/TableRowsComponent";
 import Modal from "react-modal";
+import DoneIcon from "@mui/icons-material/Done";
 const HomePage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
@@ -32,10 +36,6 @@ const HomePage = () => {
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
 
   useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
     axios
       .get("/cards")
       .then(({ data }) => {
@@ -163,10 +163,8 @@ const HomePage = () => {
               <CardComponent
                 id={item._id}
                 phone={item.phone}
-                address={
-                  item.street + " " + item.houseNumber + ", " + item.city
-                }
-                cardNumber={item.bizNumber}
+                clubMember={item.clubMember}
+                email={item.email}
                 title={item.firstName}
                 subTitle={item.ReceptionDateAtTheOffice}
                 description={item.BusinessDescription}
@@ -188,9 +186,24 @@ const HomePage = () => {
         </Grid>
       ) : (
         <Grid container spacing={2}>
-          <TableRowComponent />
-          {cardsArr.map((item) => {
-            return (
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>{"Name"}</TableCell>
+                <TableCell>{"Phone"}</TableCell>
+                <TableCell>{"Email"}</TableCell>
+                <TableCell>{"club - member"}</TableCell>
+                <TableCell>{"link - to - card"}</TableCell>
+                {/* {columns.map((item) => (
+            <TableCell key={item + Date.now()}>
+              <Typography>{item}</Typography>
+            </TableCell>
+          ))} */}
+              </TableRow>
+            </TableHead>
+            {cardsArr.map((item) => (
+              //    return(
+
               <TableRowsComponent
                 key={item._id + Date.now()}
                 Name={item.firstName}
@@ -199,8 +212,9 @@ const HomePage = () => {
                 clubMember={item.clubMember}
                 linkToCard={"link to card"}
               />
-            );
-          })}
+              //   );
+            ))}
+          </Table>
         </Grid>
       )}
     </Box>

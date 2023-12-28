@@ -1,0 +1,44 @@
+Timestamp: 2023-12-28T12:22:19.104Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-12-28T12:22:55.447Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-12-28T12:23:57.176Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-12-28T12:23:58.843Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-12-28T12:28:08.226Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-12-28T12:29:17.582Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-12-28T12:30:03.358Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-12-28T12:36:54.050Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-12-28T12:38:40.964Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2023-12-28T12:49:26.255Z
+Status Code: 400
+Error: ValidationError: "dateOpened" length must be less than or equal to 10 characters long
+
+Timestamp: 2023-12-28T12:49:54.739Z
+Status Code: 400
+Error: ValidationError: "lastDateToDo" length must be less than or equal to 10 characters long
+

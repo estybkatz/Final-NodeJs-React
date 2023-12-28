@@ -33,6 +33,7 @@ const MyDoneTasksPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   //const [costumerData, setCostumerData] = useState(null);
   const [taskData, setTaskData] = useState([]);
+  const [customers, setCustomers] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
   let qparams = useQueryParams();
@@ -56,6 +57,22 @@ const MyDoneTasksPage = () => {
   //         toast.error("Oops");
   //       });
   //   }, []);
+  useEffect(() => {
+    /*
+      useEffect cant handle async ()=>{}
+      this is why we use the old promise way
+    */
+    axios
+      .get("/cards")
+      .then((response) => {
+        // קבלנו את רשימת העובדים מהשרת
+        console.log("response.data!!!", response.data);
+        setCustomers(response.data);
+      })
+      .catch((err) => {
+        toast.error("Oops, Error retrieving data", err);
+      });
+  }, []);
   useEffect(() => {
     /*
       useEffect cant handle async ()=>{}
@@ -187,7 +204,11 @@ const MyDoneTasksPage = () => {
               <TableBody>
                 <TableRow>
                   <TableCell key={item.customerID + Date.now()}>
-                    {item.customerID}
+                    {customers.map((item2) =>
+                      item2._id === item.customerID
+                        ? item2.firstName + " " + item2.lastName
+                        : null
+                    )}
                   </TableCell>
                   <TableCell key={item.task + Date.now()}>
                     {item.task}

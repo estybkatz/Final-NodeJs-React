@@ -11,6 +11,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { Button, Typography } from "@mui/material";
+import UnpublishedIcon from "@mui/icons-material/Unpublished";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 const TableRowsComponent = ({
   img,
   title,
@@ -69,20 +71,36 @@ const TableRowsComponent = ({
   return (
     // <Paper sx={{ width: "100%", overflow: "hidden" }}>
     //<TableContainer sx={{ maxHeight: 440 }}>
-    <Table aria-label="sticky table">
-      <TableBody>
-        <TableRow>
-          <TableCell text-align="left">{Name}</TableCell>
-          <TableCell text-align="left">{phone}</TableCell>
-          <TableCell text-align="left">{email}</TableCell>
-          <TableCell text-align="left">{clubMember}</TableCell>
+    // <Table>
+    //   <TableHead>
+    //     <TableRow>
+    //       <TableCell>{"Name"}</TableCell>
+    //       <TableCell>{"Phone"}</TableCell>
+    //       <TableCell>{"Email"}</TableCell>
+    //       <TableCell>{"club - member"}</TableCell>
+    //       <TableCell>{"link - to - card"}</TableCell>
+    //       {/* {columns.map((item) => (
+    //         <TableCell key={item + Date.now()}>
+    //           <Typography>{item}</Typography>
+    //         </TableCell>
+    //       ))} */}
+    //     </TableRow>
+    //   </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableCell>{Name}</TableCell>
+        <TableCell>{phone}</TableCell>
+        <TableCell>{email}</TableCell>
+        <TableCell>
+          {clubMember ? <CheckCircleIcon /> : <UnpublishedIcon />}
+        </TableCell>
 
-          <TableCell text-align="left">
-            <Button>{linkToCard} </Button>
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+        <TableCell>
+          <Button>{linkToCard} </Button>
+        </TableCell>
+      </TableRow>
+    </TableBody>
+    // </Table>
     //</TableContainer>
     // </Paper>
   );

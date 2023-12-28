@@ -30,6 +30,7 @@ const MoreInformationPage = () => {
   const [inputState, setInputState] = useState(null);
   const [taskState, setTasksState] = useState([]);
   const [taskData, setTaskData] = useState(null);
+  const [workers, setWorkers] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     (async () => {
@@ -38,21 +39,11 @@ const MoreInformationPage = () => {
         let newInputState = {
           ...data,
         };
-        // if (data.image && data.image.url) {
-        //   newInputState.url = data.image.url;
-        // } else {
-        //   newInputState.url = "";
-        // }
-        // if (data.image && data.image.alt) {
-        //   newInputState.alt = data.image.alt;
-        // } else {
-        //   newInputState.alt = "";
-        // }
-        // delete newInputState.image;
+
         delete newInputState.likes;
         delete newInputState._id;
         delete newInputState.user_id;
-        // delete newInputState.bizNumber;
+
         delete newInputState.__v;
 
         let dataArr = Object.keys(data);
@@ -84,14 +75,24 @@ const MoreInformationPage = () => {
       });
   }, []);
   console.log("taskState", taskState);
-
+  useEffect(() => {
+    // בטעינת הדף, נבצע בקשת HTTP לשרת
+    axios
+      .get("/auth/users")
+      .then((response) => {
+        // קבלנו את רשימת העובדים מהשרת
+        setWorkers(response.data);
+        console.log("responseworkers", response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching employees:", error);
+      });
+  }, []);
   const columns = [
-    "customer name",
     "task to do",
     "dateOpened",
     "last date to do",
     "worker to Do",
-    "status",
   ];
 
   const handleDoneChange = (id) => {
@@ -154,7 +155,7 @@ const MoreInformationPage = () => {
         <Typography component="h1" variant="h5">
           More Information
         </Typography>
-        <Box
+        {/* <Box
           component="img"
           sx={{
             height: 180,
@@ -168,7 +169,7 @@ const MoreInformationPage = () => {
               ? inputState.url
               : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
           }
-        />
+        /> */}
         <Box component="div" noValidate sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -183,37 +184,42 @@ const MoreInformationPage = () => {
                   )
               )}
             </Grid>
-            <Box>
-              <Table stickyHeader aria-label="sticky table">
-                <TableHead>
-                  <TableRow>
-                    {columns.map((item) => (
-                      <TableCell key={item + "Row" + Date.now()}>
-                        <Typography>{item}</Typography>
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                </TableHead>
-                {taskState.map((item) => (
-                  <TableBody key={item._id + "Body" + Date.now()}>
+            {taskState.length !== 0 ? (
+              <Box>
+                <Table stickyHeader aria-label="sticky table">
+                  <TableHead>
                     <TableRow>
-                      <TableCell key={item.customerID + Date.now()}>
+                      {columns.map((item) => (
+                        <TableCell key={item + "Row" + Date.now()}>
+                          <Typography>{item}</Typography>
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  {taskState.map((item) => (
+                    <TableBody key={item._id + "Body" + Date.now()}>
+                      <TableRow>
+                        {/* <TableCell key={item.customerID + Date.now()}>
                         {item.customerID}
-                      </TableCell>
-                      <TableCell key={item.task + Date.now()}>
-                        {item.task}
-                      </TableCell>
-                      <TableCell key={item.dateOpened + Date.now()}>
-                        {item.dateOpened}
-                      </TableCell>
-                      <TableCell key={item.lastDateToDo + Date.now()}>
-                        {item.lastDateToDo}
-                      </TableCell>
-                      <TableCell key={item.workerToDo + Date.now()}>
-                        {item.workerToDo}5
-                      </TableCell>
+                      </TableCell> */}
+                        <TableCell key={item.task + Date.now()}>
+                          {item.task}
+                        </TableCell>
+                        <TableCell key={item.dateOpened + Date.now()}>
+                          {item.dateOpened}
+                        </TableCell>
+                        <TableCell key={item.lastDateToDo + Date.now()}>
+                          {item.lastDateToDo}
+                        </TableCell>
+                        <TableCell key={item.workerToDo + Date.now()}>
+                          {workers.map((item2) =>
+                            item2._id === item.workerToDo
+                              ? item2.name.firstName + " " + item2.name.lastName
+                              : null
+                          )}
+                        </TableCell>
 
-                      <TableCell key={item.done + Date.now()}>
+                        {/* <TableCell key={item.done + Date.now()}>
                         <FormControlLabel
                           control={
                             <Checkbox
@@ -239,13 +245,16 @@ const MoreInformationPage = () => {
                         >
                           Updating
                         </Button>
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
-                  // </Grid>
-                ))}
-              </Table>
-            </Box>
+                      </TableCell> */}
+                      </TableRow>
+                    </TableBody>
+                    // </Grid>
+                  ))}
+                </Table>
+              </Box>
+            ) : (
+              "Its no tasks to do"
+            )}
             <Grid item xs={12}>
               <Button
                 fullWidth

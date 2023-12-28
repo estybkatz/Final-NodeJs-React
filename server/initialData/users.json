@@ -13,57 +13,54 @@
       "country": "Israel",
       "city": "Ashkeluna",
       "street": "nof ha hof",
-      "houseNumber": 255
+      "houseNumber": 255,
+      "zip": 0
     },
-    "image": {
-      "url": "",
-      "alt": ""
-    },
-    "isBusiness": false,
-    "isAdmin": true
+
+    "isAdmin": true,
+    "isBusiness": false
   },
+
   {
     "name": {
-      "firstName": "john2",
-      "middleName": "johny2",
-      "lastName": "sinay"
+      "firstName": "john",
+      "middleName": "johny",
+      "lastName": "wich"
     },
     "phone": "0500000000",
-    "email": "johnsinay@gmail.com",
+    "email": "john@gmail.com",
     "password": "Aa123456!",
     "address": {
       "state": "not defined",
       "country": "Israel",
       "city": "Ashkeluna",
       "street": "nof ha hof",
-      "houseNumber": 255
+      "houseNumber": 255,
+      "zip": 0
     },
-    "image": {
-      "url": "",
-      "alt": ""
-    },
+
+    "isAdmin": true,
     "isBusiness": false
   },
   {
     "name": {
-      "firstName": "kenny",
-      "middleName": "kenny2",
-      "lastName": "mc"
+      "firstName": "john",
+      "middleName": "johny",
+      "lastName": "wich"
     },
     "phone": "0500000000",
-    "email": "kenny@gmail.com",
+    "email": "john@gmail.com",
     "password": "Aa123456!",
     "address": {
       "state": "not defined",
       "country": "Israel",
       "city": "Ashkeluna",
       "street": "nof ha hof",
-      "houseNumber": 255
+      "houseNumber": 255,
+      "zip": 0
     },
-    "image": {
-      "url": "",
-      "alt": ""
-    },
-    "isBusiness": true
+
+    "isAdmin": true,
+    "isBusiness": false
   }
 ]

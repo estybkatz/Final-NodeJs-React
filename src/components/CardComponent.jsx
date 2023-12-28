@@ -11,6 +11,8 @@ import {
   Box,
   IconButton,
 } from "@mui/material";
+import UnpublishedIcon from "@mui/icons-material/Unpublished";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import CreateIcon from "@mui/icons-material/Create";
 import PropTypes from "prop-types";
@@ -29,8 +31,8 @@ const CardComponent = ({
   title,
   subTitle,
   phone,
-  address,
-  cardNumber,
+  clubMember,
+  email,
   id,
   onDelete,
   onDeletefav,
@@ -93,8 +95,13 @@ const CardComponent = ({
       <CardContent onClick={handleInfoBtnClick}>
         <hr />
         <Typography>{"Phone: " + phone}</Typography>
-        <Typography>{"Address: " + address}</Typography>
-        <Typography>{"Card Number: " + cardNumber}</Typography>
+
+        <Typography>{"Email: " + email}</Typography>
+        <br />
+        <Typography>
+          {"clubMember: "}
+          {clubMember ? <CheckCircleIcon /> : <UnpublishedIcon />}
+        </Typography>
       </CardContent>
 
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -127,29 +134,29 @@ const CardComponent = ({
             ""
           )}
         </Box>
-        <Box sx={{ display: "flex", flex: 1, justifyContent: "flex-end" }}>
+        {/* <Box sx={{ display: "flex", flex: 1, justifyContent: "flex-end" }}> */}
+        <IconButton
+          color="white"
+          aria-label="add to shopping cart"
+          onClick={openModal}
+        >
+          Add-Task
+          {/* <CallIcon /> */}
+        </IconButton>
+        {isLoggedIn ? (
           <IconButton
-            color="white"
+            color="primary"
             aria-label="add to shopping cart"
-            onClick={openModal}
+            onClick={handleFavBtnClick}
           >
-            Add-Task
-            {/* <CallIcon /> */}
+            <FavoriteIcon
+              style={favState ? { color: "red" } : { color: "blue" }}
+            />
           </IconButton>
-          {isLoggedIn ? (
-            <IconButton
-              color="primary"
-              aria-label="add to shopping cart"
-              onClick={handleFavBtnClick}
-            >
-              <FavoriteIcon
-                style={favState ? { color: "red" } : { color: "blue" }}
-              />
-            </IconButton>
-          ) : (
-            ""
-          )}
-        </Box>
+        ) : (
+          ""
+        )}
+        {/* </Box> */}
         <Box>
           <IconButton onClick={handleDetailsBtnClick}>More Details</IconButton>
         </Box>

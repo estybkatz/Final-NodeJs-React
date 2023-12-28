@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 import CoPresentTwoToneIcon from "@mui/icons-material/CoPresentTwoTone";
 import InfoIcon from "@mui/icons-material/Info";
 import { useSelector } from "react-redux";
@@ -53,10 +54,10 @@ const Footer = () => {
           {/* <Box> */}
           {isLoggedIn ? (
             <BottomNavigationAction
-              label="Favorites"
-              icon={<FavoriteIcon />}
+              label="My Tasks"
+              icon={<AttachFileIcon />}
               component={Link}
-              to="/favCards"
+              to="/myTasks"
             />
           ) : (
             ""

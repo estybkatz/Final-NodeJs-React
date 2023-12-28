@@ -11,7 +11,7 @@ const authMiddleware = async (req, res, next) => {
 
     const userData = await verifyToken(req.headers["x-auth-token"]);
     req.userData = userData;
-    console.log(userData);
+    console.log("data", userData);
     next();
   } catch (err) {
     let errToSend;
