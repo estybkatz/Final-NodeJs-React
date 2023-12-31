@@ -212,8 +212,15 @@ const WorkerPrivtePage = () => {
         <CardContent>
           <hr />
           <Typography>{"Phone: " + workerData.phone}</Typography>
-          <Typography>{"Address: " + workerData.address}</Typography>
-          <Typography>{"Card Number: " + workerData.cardNumber}</Typography>
+          <Typography>
+            {"Address: " +
+              workerData.address.street +
+              " " +
+              workerData.address.houseNumber +
+              " " +
+              workerData.address.city}
+          </Typography>
+
           <Typography variant="body1" color="white">
             {"Email: " + workerData.email}
           </Typography>

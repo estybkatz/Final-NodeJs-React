@@ -145,16 +145,14 @@ const CostumerPrivtePage = () => {
               " " +
               cardData.zip}
           </Typography>
-          <Typography>{"Card Number: " + cardData.cardNumber}</Typography>
+
           <Typography variant="body1" color="white">
             {"Email: " + cardData.email}
           </Typography>
           <Typography variant="body1" color="white">
             {"ReceptionDateAtTheOffice: " + cardData.ReceptionDateAtTheOffice}
           </Typography>
-          <Typography variant="body1" color="white">
-            {"clubMember: " + cardData.clubMember}
-          </Typography>
+
           <Typography variant="body1" color="white">
             {"BusinessDescription: " + cardData.BusinessDescription}
           </Typography>
