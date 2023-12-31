@@ -30,6 +30,8 @@ const CostumerPrivtePage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardData, setCardData] = useState(null);
   const [taskData, setTaskData] = useState(null);
+  const [customers, setCustomers] = useState([]);
+  const [workersArr, setWorkersArr] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
   let qparams = useQueryParams();
@@ -54,6 +56,38 @@ const CostumerPrivtePage = () => {
       });
   }, []);
   console.log(taskData);
+  useEffect(() => {
+    /*
+      useEffect cant handle async ()=>{}
+      this is why we use the old promise way
+    */
+    axios
+      .get("/auth/users")
+      .then(({ data }) => {
+        console.log("data", data);
+        setWorkersArr(data);
+        //filterFunc(data);
+      })
+      .catch((err) => {
+        toast.error("Oops, Error retrieving data");
+      });
+  }, []);
+  useEffect(() => {
+    /*
+      useEffect cant handle async ()=>{}
+      this is why we use the old promise way
+    */
+    axios
+      .get("/cards")
+      .then((response) => {
+        // קבלנו את רשימת העובדים מהשרת
+        console.log("response.data!!!", response.data);
+        setCustomers(response.data);
+      })
+      .catch((err) => {
+        toast.error("Oops, Error retrieving data", err);
+      });
+  }, []);
   useEffect(() => {
     /*
       useEffect cant handle async ()=>{}
@@ -143,9 +177,13 @@ const CostumerPrivtePage = () => {
               {taskData.map((item) => (
                 // <Grid item sm={6} xs={12} md={4} key={item._id + Date.now()}>
                 <TableBody>
-                  <TableRow>
+                  <TableRow key={item + Date.now()}>
                     <TableCell key={item.customerID + Date.now()}>
-                      {item.customerID}
+                      {customers.map((item2) =>
+                        item2._id === item.customerID
+                          ? item2.firstName + " " + item2.lastName
+                          : null
+                      )}
                     </TableCell>
                     <TableCell key={item.task + Date.now()}>
                       {item.task}
@@ -157,7 +195,11 @@ const CostumerPrivtePage = () => {
                       {item.lastDateToDo}
                     </TableCell>
                     <TableCell key={item.workerToDo + Date.now()}>
-                      {item.workerToDo}
+                      {workersArr.map((item2) =>
+                        item2._id === item.workerToDo
+                          ? item2.name.firstName + " " + item2.name.lastName
+                          : null
+                      )}
                     </TableCell>
                   </TableRow>
                 </TableBody>

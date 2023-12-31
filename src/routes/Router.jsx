@@ -41,11 +41,47 @@ const Router = () => {
       <Route path={ROUTES.HOME} element={<HomePage />} />
       <Route path={ROUTES.FAKEHOME} element={<Navigate to={ROUTES.HOME} />} />
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
-      <Route path={ROUTES.MYTASKS} element={<MyTasksPage />} />
-      <Route path={ROUTES.MYDONETASK} element={<MyDoneTasksPage />} />
-      <Route path={"/createTask/:id"} element={<TasksPage />} />
-      <Route path={"costumer/:id"} element={<CostumerPrivtePage />} />
-      <Route path={"worker/:id"} element={<WorkerPrivtePage />} />
+      <Route
+        path={ROUTES.MYTASKS}
+        element={<ProtectedRoute isLoggedIn={true} element={<MyTasksPage />} />}
+      />
+      <Route
+        path={ROUTES.MYDONETASK}
+        element={
+          <SuperProtectedRoute
+            isAdmin={true}
+            isBiz={false}
+            isLoggedIn={true}
+            element={<MyDoneTasksPage />}
+          />
+        }
+      />
+      <Route
+        path={"/createTask/:id"}
+        element={<ProtectedRoute isLoggedIn={true} element={<TasksPage />} />}
+      />
+      <Route
+        path={"costumer/:id"}
+        element={
+          <SuperProtectedRoute
+            isAdmin={true}
+            isBiz={false}
+            isLoggedIn={true}
+            element={<CostumerPrivtePage />}
+          />
+        }
+      />
+      <Route
+        path={"worker/:id"}
+        element={
+          <SuperProtectedRoute
+            isAdmin={true}
+            isBiz={false}
+            isLoggedIn={true}
+            element={<WorkerPrivtePage />}
+          />
+        }
+      />
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />
       <Route
         path={ROUTES.FAV}
@@ -56,24 +92,12 @@ const Router = () => {
       <Route
         path={ROUTES.CREATE}
         element={
-          <SuperProtectedRoute
-            isAdmin={true}
-            isBiz={true}
-            isLoggedIn={false}
-            element={<CreateCardPage />}
-          />
+          <ProtectedRoute isLoggedIn={true} element={<CreateCardPage />} />
         }
       />
       <Route
         path={ROUTES.MYCARDS}
-        element={
-          <SuperProtectedRoute
-            isAdmin={true}
-            isBiz={true}
-            isLoggedIn={false}
-            element={<MyCardsPage />}
-          />
-        }
+        element={<ProtectedRoute isLoggedIn={true} element={<MyCardsPage />} />}
       />
       <Route
         path={ROUTES.SANDBOX}
@@ -85,13 +109,16 @@ const Router = () => {
           />
         }
       />
-      <Route
+      {/* <Route
         path={ROUTES.MOREINFORMATIOMPAGE}
-        element={<MoreInformationPage />}
-      />
+        element={
+        <ProtectedRoute isLoggedIn={true} element={<MoreInformationPage />}
+        }
+       /> */}
+
       <Route
         path={ROUTES.LOGOUT}
-        element={<ProtectedRoute element={<LogoutPage />} />}
+        element={<ProtectedRoute isLoggedIn={true} element={<LogoutPage />} />}
       />
       <Route
         path="/edit/:id"

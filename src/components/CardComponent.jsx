@@ -2,8 +2,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import {
   Card,
-  CardActionArea,
-  CardMedia,
   CardHeader,
   CardContent,
   Typography,
@@ -18,13 +16,9 @@ import CreateIcon from "@mui/icons-material/Create";
 import PropTypes from "prop-types";
 import { Fragment, useState } from "react";
 
-import CallIcon from "@mui/icons-material/Call";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import Modal from "react-modal";
-import { Navigate, Routes, useNavigate } from "react-router-dom";
-import ROUTES from "../routes/ROUTES";
 
 const CardComponent = ({
   img,
@@ -50,8 +44,6 @@ const CardComponent = ({
   );
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   const [favState, setfavState] = useState(isFav);
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
   const handleDeleteBtnClick = () => {
     onDelete(id);
   };
@@ -158,7 +150,13 @@ const CardComponent = ({
         )}
         {/* </Box> */}
         <Box>
-          <IconButton onClick={handleDetailsBtnClick}>More Details</IconButton>
+          {payload ? (
+            <IconButton onClick={handleDetailsBtnClick}>
+              More Details
+            </IconButton>
+          ) : (
+            ""
+          )}
         </Box>
       </CardActions>
     </Card>

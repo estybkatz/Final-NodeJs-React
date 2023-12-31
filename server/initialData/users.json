@@ -6,7 +6,7 @@
       "lastName": "wich"
     },
     "phone": "0500000000",
-    "email": "john@gmail.com",
+    "email": "johnie@gmail.com",
     "password": "Aa123456!",
     "address": {
       "state": "not defined",
@@ -14,7 +14,8 @@
       "city": "Ashkeluna",
       "street": "nof ha hof",
       "houseNumber": 255,
-      "zip": 0
+      "zip": 0,
+      "password": "Aa123456!"
     },
 
     "isAdmin": true,
@@ -28,7 +29,7 @@
       "lastName": "wich"
     },
     "phone": "0500000000",
-    "email": "john@gmail.com",
+    "email": "johnSch@gmail.com",
     "password": "Aa123456!",
     "address": {
       "state": "not defined",
@@ -36,7 +37,8 @@
       "city": "Ashkeluna",
       "street": "nof ha hof",
       "houseNumber": 255,
-      "zip": 0
+      "zip": 0,
+      "password": "Aa123456!"
     },
 
     "isAdmin": true,
@@ -49,7 +51,7 @@
       "lastName": "wich"
     },
     "phone": "0500000000",
-    "email": "john@gmail.com",
+    "email": "johnDZS@gmail.com",
     "password": "Aa123456!",
     "address": {
       "state": "not defined",
@@ -57,7 +59,8 @@
       "city": "Ashkeluna",
       "street": "nof ha hof",
       "houseNumber": 255,
-      "zip": 0
+      "zip": 0,
+      "password": "Aa123456!"
     },
 
     "isAdmin": true,

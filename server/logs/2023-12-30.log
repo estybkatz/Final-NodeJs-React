@@ -1,0 +1,56 @@
+Timestamp: 2023-12-30T21:00:35.405Z
+Status Code: 400
+Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+
+Timestamp: 2023-12-30T21:02:19.356Z
+Status Code: 400
+Error: TypeError: Cannot read properties of undefined (reading '_id')
+
+Timestamp: 2023-12-30T21:02:59.488Z
+Status Code: 400
+Error: TypeError: Cannot read properties of undefined (reading 'id')
+
+Timestamp: 2023-12-30T21:04:13.209Z
+Status Code: 400
+Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+
+Timestamp: 2023-12-30T21:04:50.976Z
+Status Code: 400
+Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+
+Timestamp: 2023-12-30T21:05:13.875Z
+Status Code: 400
+Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+
+Timestamp: 2023-12-30T21:07:18.504Z
+Status Code: 400
+Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+
+Timestamp: 2023-12-30T21:12:45.041Z
+Status Code: 400
+Error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+

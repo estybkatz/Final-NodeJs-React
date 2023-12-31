@@ -77,7 +77,7 @@ const cardSchema = new mongoose.Schema({
   city: { type: String, minLength: 2, maxLength: 256, required: true },
   street: { type: String, minLength: 2, maxLength: 256, required: true },
   houseNumber: { type: String, minLength: 1, maxLength: 256, required: true },
-  zip: { type: Number, minLength: 1, maxLength: 99999999 },
+  zip: { type: Number, minLength: 0, maxLength: 99999999 },
   likes: [String],
   tasks: [String],
   user_id: {

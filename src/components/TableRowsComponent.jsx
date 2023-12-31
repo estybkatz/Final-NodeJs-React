@@ -1,16 +1,11 @@
 import * as React from "react";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import UnpublishedIcon from "@mui/icons-material/Unpublished";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 const TableRowsComponent = ({
@@ -34,18 +29,9 @@ const TableRowsComponent = ({
   user_id,
   isFav,
 }) => {
-  const isLoggedIn = useSelector(
-    (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
-  );
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   const [favState, setfavState] = React.useState(isFav);
-  const columns = [
-    "Name",
-    "Phone",
-    "Email",
-    "club - member",
-    "link - to - card",
-  ];
+
   const handleDeleteBtnClick = () => {
     onDelete(id);
   };

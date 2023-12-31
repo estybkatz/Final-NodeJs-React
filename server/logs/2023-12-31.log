@@ -1,0 +1,124 @@
+Timestamp: 2023-12-31T08:51:28.717Z
+Status Code: 400
+Error: ValidationError: "password" is required
+
+Timestamp: 2023-12-31T08:51:36.644Z
+Status Code: 400
+Error: ValidationError: "password" is required
+
+Timestamp: 2023-12-31T09:04:34.493Z
+Status Code: 400
+Error: ValidationError: "password" is required
+
+Timestamp: 2023-12-31T09:05:51.267Z
+Status Code: 400
+Error: ValidationError: "password" is required
+
+Timestamp: 2023-12-31T09:07:29.712Z
+Status Code: 400
+Error: ValidationError: "password" is required
+
+Timestamp: 2023-12-31T11:47:13.831Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T11:47:46.071Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T11:47:46.074Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T11:48:26.630Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T11:48:26.946Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T11:52:57.326Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T11:52:57.328Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T11:54:56.045Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T11:54:56.047Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T11:55:21.004Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T11:55:21.116Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T12:13:38.916Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T12:13:38.920Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T12:13:44.528Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T12:13:44.837Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T12:14:13.228Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T12:14:13.229Z
+Status Code: 401
+Error: please provide token
+
+Timestamp: 2023-12-31T13:15:54.741Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-12-31T13:15:57.943Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-12-31T13:16:26.798Z
+Status Code: 400
+Error: There exists no card with the id
+
+Timestamp: 2023-12-31T13:16:27.104Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-12-31T13:16:35.625Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-12-31T13:16:39.456Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2023-12-31T13:41:25.646Z
+Status Code: 400
+Error: ValidationError: "address.zip" must be a number
+
+Timestamp: 2023-12-31T13:43:01.357Z
+Status Code: 400
+Error: ValidationError: "address.zip" must be a number
+
+Timestamp: 2023-12-31T13:45:09.425Z
+Status Code: 400
+Error: ValidationError: "address.zip" must be a number
+

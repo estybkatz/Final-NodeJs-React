@@ -151,7 +151,7 @@ const MyDoneTasksPage = () => {
     }
   };
   const getDoneList = () => {
-    navigate(ROUTES.MYDONETASK);
+    navigate(ROUTES.MYTASKS);
   };
   return (
     <Box>
@@ -179,7 +179,7 @@ const MyDoneTasksPage = () => {
             {"BusinessDescription: " + workerData.BusinessDescription}
           </Typography> */}
 
-        <h2>My Tasks</h2>
+        <h2>My Finished Tasks</h2>
         <Button
           onClick={() => {
             navigate(-1);
@@ -187,7 +187,7 @@ const MyDoneTasksPage = () => {
         >
           <ArrowBackIcon />
         </Button>
-        <Button onClick={getDoneList}>Done Tasks List</Button>
+        <Button onClick={getDoneList}>Unfinished Task List</Button>
         <Box>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>

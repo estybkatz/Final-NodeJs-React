@@ -59,7 +59,6 @@ const SearchPartial = () => {
   const handleSearchSubmit = (ev) => {
     ev.preventDefault();
     let url = location.pathname;
-
     if (searchInput) {
       navigate(`${url}?filter=${searchInput}`);
       setChanged(true);

@@ -13,6 +13,7 @@ import {
   TableHead,
   TableRow,
   Typography,
+  Grid,
 } from "@mui/material";
 import TableRowComponent from "../../components/TableRowComponent";
 import TableRowsComponent from "../../components/TableRowsComponent";
@@ -127,18 +128,19 @@ const RP1 = () => {
   return (
     <Box>
       <h2>tasks in the office list</h2>
-      <Table stickyHeader aria-label="sticky table">
-        <TableHead>
-          <TableRow>
-            {columns.map((item) => (
-              <TableCell key={item + Date.now()}>
-                <Typography>{item}</Typography>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
+      <Grid item xs={12} sm={6} md={4}>
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+              {columns.map((item) => (
+                <TableCell key={item + Date.now()}>
+                  <Typography>{item}</Typography>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
 
-        {/* {tasksArr.map((item) => (
+          {/* {tasksArr.map((item) => (
           <TableBody>
             <TableRow>
               <TableCell key={item.customerID + Date.now()}>
@@ -158,30 +160,31 @@ const RP1 = () => {
             </TableRow>
           </TableBody>
         ))} */}
-        <TableBody>
-          {tasksArr.map((item) => (
-            <TableRow key={item._id}>
-              <TableCell>
-                {customers.map((item2) =>
-                  item2._id === item.customerID
-                    ? item2.firstName + " " + item2.lastName
-                    : null
-                )}
-              </TableCell>
-              <TableCell>{item.task}</TableCell>
-              <TableCell>{item.dateOpened}</TableCell>
-              <TableCell>{item.lastDateToDo}</TableCell>
-              <TableCell>
-                {employees.map((item2) =>
-                  item2._id === item.workerToDo
-                    ? item2.name.firstName + " " + item2.name.lastName
-                    : null
-                )}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          <TableBody>
+            {tasksArr.map((item) => (
+              <TableRow key={item._id}>
+                <TableCell>
+                  {customers.map((item2) =>
+                    item2._id === item.customerID
+                      ? item2.firstName + " " + item2.lastName
+                      : null
+                  )}
+                </TableCell>
+                <TableCell>{item.task}</TableCell>
+                <TableCell>{item.dateOpened}</TableCell>
+                <TableCell>{item.lastDateToDo}</TableCell>
+                <TableCell>
+                  {employees.map((item2) =>
+                    item2._id === item.workerToDo
+                      ? item2.name.firstName + " " + item2.name.lastName
+                      : null
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Grid>
       {/* </TableContainer> */}
     </Box>
   );

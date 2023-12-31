@@ -52,3 +52,33 @@
     font-size: 1.5rem !important ;
   }
 }
+/* ResponsiveTable.css */
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .table th,
+  .table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tableContainer {
+    maxwidth: 100%;
+    overflowx: auto;
+  }
+}

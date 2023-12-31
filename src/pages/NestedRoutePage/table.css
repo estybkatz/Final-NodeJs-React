@@ -1,0 +1,48 @@
+/* ResponsiveTable.css */
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: left;
+}
+
+@media (max-width: 806px) {
+  .tableContainer {
+    max-width: 100%;
+  }
+  .tableCell {
+    font-size: 1px;
+    display: none;
+  }
+  .tableCellNotNone {
+    padding: 1px;
+  }
+  .css-1ijrop1-MuiTableCell-root {
+    padding: 2px !important;
+  }
+}
+@media (max-width: 600px) {
+  .tableContainer {
+    max-width: 100%;
+  }
+  .tableCell {
+    font-size: 1px;
+    display: none;
+  }
+  .tableCellNotNone {
+    padding: 1px;
+  }
+
+  .css-1ijrop1-MuiTableCell-root {
+    padding: 1px !important;
+  }
+}

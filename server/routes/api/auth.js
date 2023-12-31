@@ -5,6 +5,7 @@ const {
   registerUserValidation,
   loginUserValidation,
   idUserValidation,
+  profileValidation,
 } = require("../../validation/authValidationService");
 const normalizeUser = require("../../model/usersService/helpers/normalizationUserService");
 const usersServiceModel = require("../../model/usersService/usersService");
@@ -98,6 +99,29 @@ router.get(
     }
   }
 );
+//localhost:8181/api/auth/users/userInfo
+router.get("/users/userInfo/:id", async (req, res) => {
+  try {
+    console.log("hello");
+
+    // let user = req.user;
+    console.log(req.params.id);
+    //User.findById(user._id);
+    let user = await usersServiceModel.getUserdById(req.params.id);
+    //delete user.password;
+    delete user.timeStamps;
+    delete user.blockedUntil;
+    delete user.triesTimes;
+    delete user.createdAt;
+    console.log(user);
+    console.log("hello2");
+    res.send(user);
+  } catch (err) {
+    logErrorToFile(err, 400);
+    res.status(500).send(err);
+  }
+});
+
 //http://localhost:8181/api/auth/users/usercard/:id
 router.get(
   "/users/usercard/:id",
@@ -152,18 +176,18 @@ router.put(
     let num = 400;
     try {
       await idUserValidation(req.params.id);
-      await registerUserValidation(req.body);
+      await profileValidation(req.body);
       num = 500;
-      req.body.password = await hashService.generateHash(req.body.password);
-      if (req.body.password) num = 400;
-      req.body = normalizeUser(req.body);
-      if (req.body.timeStamps || req.body.blockedUntil) {
-        num = 403;
-        throw new CustomError(
-          "you are not allowed to edit timeStamps or blockedUntil"
-        );
-      }
-      num = 500;
+      // req.body.password = await hashService.generateHash(req.body.password);
+      // if (req.body.password) num = 400;
+      // req.body = normalizeUser(req.body);
+      // if (req.body.timeStamps || req.body.blockedUntil) {
+      //   num = 403;
+      //   throw new CustomError(
+      //     "you are not allowed to edit timeStamps or blockedUntil"
+      //   );
+      // }
+      // num = 500;
       const userUpdate = await usersServiceModel.updateUser(
         req.params.id,
         req.body
@@ -228,18 +252,5 @@ router.delete(
     }
   }
 );
-//http://localhost:8181/api/auth/users/userInfo
-// router.get("/users/userInfo", (req, res) => {
-//   try {
-//     console.log("hello");
-//     let user = req.user;
-
-//     User.findById(user._id);
-//     console.log("hello2");
-//     res.send(user);
-//   } catch (errorsFromMongoose) {
-//     res.status(500).send(errorsFromMongoose);
-//   }
-// });
 
 module.exports = router;

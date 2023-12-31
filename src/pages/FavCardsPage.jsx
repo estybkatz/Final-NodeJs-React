@@ -49,13 +49,7 @@ const FavCardsPage = () => {
         when component loaded and states not loaded
       */
       setOriginalCardsArr(data);
-      setCardsArr(
-        data.filter(
-          (card) =>
-            card.firstName.startsWith(filter) ||
-            card.bizNumber.startsWith(filter)
-        )
-      );
+      setCardsArr(data.filter((card) => card.firstName.startsWith(filter)));
 
       return;
     }
@@ -65,10 +59,7 @@ const FavCardsPage = () => {
       */
       let newOriginalCardsArr = JSON.parse(JSON.stringify(originalCardsArr));
       setCardsArr(
-        newOriginalCardsArr.filter(
-          (card) =>
-            card.firstName.startsWith(filter) || card.email.startsWith(filter)
-        )
+        newOriginalCardsArr.filter((card) => card.firstName.startsWith(filter))
       );
     }
   };
@@ -95,9 +86,15 @@ const FavCardsPage = () => {
   const handleMoreInformationFromInitialCardsArr = (id) => {
     navigate(`/MInfo/${id}`);
   };
+  const createtask = (id) => {
+    navigate(`/createTask/${id}`);
+  };
   if (!cardsArr) {
     return <CircularProgress />;
   }
+  const handleDetailsBtnClick = (id) => {
+    navigate(`/MInfo/${id}`);
+  };
 
   return (
     <Box>
@@ -116,19 +113,21 @@ const FavCardsPage = () => {
                   address={
                     item.street + " " + item.houseNumber + ", " + item.city
                   }
+                  onCreateTask={createtask}
                   cardNumber={item.bizNumber}
                   title={item.firstName}
                   subTitle={item.ReceptionDateAtTheOffice}
                   description={item.BusinessDescription}
+                  onInfo={handleMoreInformationFromInitialCardsArr}
                   //img={item.image ? item.image.url : ""}
                   onDeletefav={delete1}
                   onDelete={handleDeleteFromInitialCardsArr}
                   onEdit={handleEditFromInitialCardsArr}
-                  onInfo={handleMoreInformationFromInitialCardsArr}
                   canEdit={payload && (payload.isBusiness || payload.isAdmin)}
                   canEditPrivate={payload && payload.isBusiness}
                   //user_id={item.user_id}
                   isFav={true}
+                  more_details={handleDetailsBtnClick}
                 />
               </Grid>
             ))}

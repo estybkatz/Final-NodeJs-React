@@ -10,7 +10,7 @@ import {
   Table,
   TableRow,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CardComponent from "../components/CardComponent";
@@ -58,12 +58,7 @@ const HomePage = () => {
         when component loaded and states not loaded
       */
       setOriginalCardsArr(data);
-      setCardsArr(
-        data.filter(
-          (card) =>
-            card.firstName.startsWith(filter) || card.email.startsWith(filter)
-        )
-      );
+      setCardsArr(data.filter((card) => card.firstName.startsWith(filter)));
       return;
     }
     if (originalCardsArr) {
@@ -72,10 +67,7 @@ const HomePage = () => {
       */
       let newOriginalCardsArr = JSON.parse(JSON.stringify(originalCardsArr));
       setCardsArr(
-        newOriginalCardsArr.filter(
-          (card) =>
-            card.title.startsWith(filter) || card.bizNumber.startsWith(filter)
-        )
+        newOriginalCardsArr.filter((card) => card.firstName.startsWith(filter))
       );
     }
   };
@@ -141,81 +133,94 @@ const HomePage = () => {
   //
   return (
     <Box>
-      <h1>Cards page</h1>
-      <h3>Here you can find cards of all categories</h3>
-      <Button onClick={changeView}>
-        <TocIcon />
-        <DashboardIcon />
-      </Button>
-      {payload && payload.isAdmin ? (
+      {payload ? (
         <Box>
-          <Button>
-            <AddCircleIcon onClick={createCustomer} />
+          <h1>Cards page</h1>
+          <h3>Here you can find cards of all categories</h3>
+          <Button onClick={changeView}>
+            <TocIcon />
+            <DashboardIcon />
           </Button>
-        </Box>
-      ) : (
-        ""
-      )}
-      {currentView ? (
-        <Grid container spacing={2}>
-          {cardsArr.map((item) => (
-            <Grid item sm={6} xs={12} md={4} key={item._id + Date.now()}>
-              <CardComponent
-                id={item._id}
-                phone={item.phone}
-                clubMember={item.clubMember}
-                email={item.email}
-                title={item.firstName}
-                subTitle={item.ReceptionDateAtTheOffice}
-                description={item.BusinessDescription}
-                //img={item.image ? item.image.url : ""}
-                onDelete={handleDeleteFromInitialCardsArr}
-                onDeletefav={delete1}
-                onEdit={handleEditFromInitialCardsArr}
-                onInfo={handleMoreInformationFromInitialCardsArr}
-                canEdit={payload && payload.isBusiness && payload.isAdmin}
-                onCreateTask={createtask}
-                canEditPrivate={payload && payload.isBusiness}
-                card={item}
-                user_id={item.user_id}
-                isFav={payload && item.likes.includes(payload._id)}
-                more_details={handleDetailsBtnClick}
-              />
+          {payload && payload.isAdmin ? (
+            <Box>
+              <Button>
+                <AddCircleIcon onClick={createCustomer} />
+              </Button>
+            </Box>
+          ) : (
+            ""
+          )}
+          {currentView ? (
+            <Grid container spacing={2}>
+              {cardsArr.map((item) => (
+                <Grid item sm={6} xs={12} md={4} key={item._id + Date.now()}>
+                  <CardComponent
+                    id={item._id}
+                    phone={item.phone}
+                    clubMember={item.clubMember}
+                    email={item.email}
+                    title={item.firstName}
+                    subTitle={item.ReceptionDateAtTheOffice}
+                    description={item.BusinessDescription}
+                    //img={item.image ? item.image.url : ""}
+                    onDelete={handleDeleteFromInitialCardsArr}
+                    onDeletefav={delete1}
+                    onEdit={handleEditFromInitialCardsArr}
+                    onInfo={handleMoreInformationFromInitialCardsArr}
+                    canEdit={payload && payload.isBusiness && payload.isAdmin}
+                    onCreateTask={createtask}
+                    canEditPrivate={payload && payload.isBusiness}
+                    card={item}
+                    user_id={item.user_id}
+                    isFav={payload && item.likes.includes(payload._id)}
+                    more_details={handleDetailsBtnClick}
+                  />
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      ) : (
-        <Grid container spacing={2}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>{"Name"}</TableCell>
-                <TableCell>{"Phone"}</TableCell>
-                <TableCell>{"Email"}</TableCell>
-                <TableCell>{"club - member"}</TableCell>
-                <TableCell>{"link - to - card"}</TableCell>
-                {/* {columns.map((item) => (
+          ) : (
+            <Grid container spacing={2}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>{"Name"}</TableCell>
+                    <TableCell>{"Phone"}</TableCell>
+                    <TableCell>{"Email"}</TableCell>
+                    <TableCell>{"club - member"}</TableCell>
+                    <TableCell>{"link - to - card"}</TableCell>
+                    {/* {columns.map((item) => (
             <TableCell key={item + Date.now()}>
               <Typography>{item}</Typography>
             </TableCell>
           ))} */}
-              </TableRow>
-            </TableHead>
-            {cardsArr.map((item) => (
-              //    return(
+                  </TableRow>
+                </TableHead>
+                {cardsArr.map((item) => (
+                  //    return(
 
-              <TableRowsComponent
-                key={item._id + Date.now()}
-                Name={item.firstName}
-                phone={item.phone}
-                email={item.email}
-                clubMember={item.clubMember}
-                linkToCard={"link to card"}
-              />
-              //   );
-            ))}
-          </Table>
-        </Grid>
+                  <TableRowsComponent
+                    key={item._id + Date.now()}
+                    Name={item.firstName}
+                    phone={item.phone}
+                    email={item.email}
+                    clubMember={item.clubMember}
+                    linkToCard={"link to card"}
+                  />
+                  //   );
+                ))}
+              </Table>
+            </Grid>
+          )}
+        </Box>
+      ) : (
+        <Box>
+          <h1>Home page</h1>
+          <h3>
+            This is our homePage, to work on our system, please login <br />
+            If you are not signed up, please contact the admin that will sign
+            you up
+          </h3>{" "}
+        </Box>
       )}
     </Box>
   );

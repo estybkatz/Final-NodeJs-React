@@ -33,7 +33,7 @@ const registerSchema = Joi.object({
   city: Joi.string().min(2).max(256).required(),
   street: Joi.string().min(2).max(256).required(),
   houseNumber: Joi.number().min(1).max(256).required(),
-  zip: Joi.number().min(1).max(999999999).allow("").allow(null),
+  zip: Joi.number().min(0).max(999999999).allow("").allow(null),
   isBusiness: Joi.boolean(),
 });
 
