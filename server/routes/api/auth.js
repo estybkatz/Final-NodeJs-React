@@ -15,7 +15,6 @@ const CustomError = require("../../utils/CustomError");
 const authmw = require("../../middleware/authMiddleware");
 const permissionsMiddlewareUser = require("../../middleware/permissionsMiddlewareUser");
 const { logErrorToFile } = require("../../utils/fileLogger");
-const User = require("../../model/mongodb/users/Users");
 
 //register
 //http://localhost:8181/api/auth/users
@@ -224,7 +223,7 @@ router.delete(
       await idUserValidation(req.params.id);
       userToDelete = await usersServiceModel.getUserdById(req.params.id);
       deletedUser = await usersServiceModel.deleteUser(req.params.id);
-      res.status(200).json({ msg: "deliting succsses" });
+      res.status(200).json({ msg: "delete success" });
     } catch (err) {
       let num = 400;
       if (userToDelete && deletedUser === null) num = 500;

@@ -13,7 +13,7 @@ import {
   TableRow,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-const CostumerPrivtePage = () => {
+const CostumerPrivatePage = () => {
   const [cardData, setCardData] = useState(null);
   const [taskData, setTaskData] = useState(null);
   const [customers, setCustomers] = useState([]);
@@ -176,4 +176,4 @@ const CostumerPrivtePage = () => {
     </Box>
   );
 };
-export default CostumerPrivtePage;
+export default CostumerPrivatePage;

@@ -61,13 +61,11 @@ router.get("/:id", authmw, async (req, res) => {
 //http://localhost:8181/api/cards/tasks/toupdate/:id
 router.put("/toupdate/:id", authmw, async (req, res) => {
   try {
-    console.log("req", req.params.id);
     let params = await cardsValidationService.idUserValidation(req.params.id);
     let taskToUpdate = await tasksServiceModel.updateTask(
       req.params.id,
       req.body
     );
-    console.log(taskToUpdate);
     res.json("succsess");
   } catch (err) {
     logErrorToFile(err, 400);

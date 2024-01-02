@@ -9,21 +9,17 @@ import LoginPage from "../pages/LoginPage";
 import EditCardPage from "../pages/EditCardPage";
 import MyCardsPage from "../pages/MyCardsPage";
 import RP1 from "../pages/NestedRoutePage/tasksForAdmin";
-import RP2 from "../pages/RP2";
 import ProtectedRoute from "../components/ProtectedRoute";
 import ProfilePage from "../pages/ProfilePage";
 import SuperProtectedRoute from "../components/SuperProtectedRoute";
 import LogoutPage from "../pages/LogoutPage";
-import NestedRoutePage from "../pages/NestedRoutePage";
 import NestedPage1 from "../pages/NestedRoutePage/NestedPage1";
 import NestedPage2 from "../pages/NestedRoutePage/NestedPage2";
-import { formGroupClasses } from "@mui/material";
 import SandboxPage from "../pages/SandboxPage";
 import MoreInformationPage from "../pages/MoreInformation";
-import { useSelector } from "react-redux";
 import EditProtectedRoute from "../components/EditProtectedRoute";
 import TasksPage from "../pages/TasksPage";
-import CostumerPrivtePage from "../pages/CustomerPrivtepage";
+import CostumerPrivatePage from "../pages/CustomerPrivatePage";
 import WorkerPrivtePage from "../pages/workerTasksPrivate";
 import MyTasksPage from "../pages/MyTasksPage";
 import MyDoneTasksPage from "../pages/MyDoneTsksPage";
@@ -55,7 +51,7 @@ const Router = () => {
             isAdmin={true}
             isBiz={false}
             isLoggedIn={true}
-            element={<CostumerPrivtePage />}
+            element={<CostumerPrivatePage />}
           />
         }
       />
@@ -152,9 +148,6 @@ const Router = () => {
         <Route path="workersList" element={<NestedPage1 />} />
         <Route path="customersList" element={<NestedPage2 />} />
         <Route path="tasks" element={<RP1 />} />
-        {/* <Route path="worker/:id" element={<WorkerPrivtePage />} />
-        <Route path="costumer/:id" element={<CostumerPrivtePage />} /> */}
-        {/* <Route path="RP2" element={<RP2 />} />  */}
       </Route>
 
       <Route path="*" element={<h1>404</h1>} />
