@@ -109,7 +109,6 @@ const TasksPage = () => {
                   id="workerToDo"
                   value={selectedEmployeeId}
                   onChange={handleEmployeeChange}
-                  inputState={selectedEmployeeId}
                 >
                   {employees.map((employee) => (
                     <MenuItem key={employee._id} value={employee._id}>
