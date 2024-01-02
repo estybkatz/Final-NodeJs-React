@@ -111,8 +111,8 @@ const HomePage = () => {
           <img
             src="https://images.pexels.com/photos/14853814/pexels-photo-14853814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="office"
-            width="1200vw"
-            height="300vh"
+            width="100%"
+            height="auto"
           />
 
           <Button onClick={changeView}>
