@@ -43,12 +43,6 @@ And if there are no login errors you should see the message painted in cyan:
 - They can perform view all details of users, delete users and cards, and change card numbers.
 - you cannot register as an admin user, please contact the system if you want to be an admin.
 
-### Business Users
-
-- Business users can create cards ,delete their cards, and favorite them.
-- They cannot perform actions related to user management excluding to stop being a business card.
-- To create a business user, set the isBiz property to "true" during registration.
-
 ### Regular Users
 
 - Regular users can only favorite cards.
@@ -57,11 +51,14 @@ And if there are no login errors you should see the message painted in cyan:
 
 ### Available Routes
 
-### User:
+### User- the workers in the office:
 
 #### Register a new user
 
 POST /http://localhost:8181/api/auth/users
+
+- must provide token
+  \*\* must be registered as admin
 
 #### Login a user
 
@@ -72,7 +69,7 @@ POST /http://localhost:8181/api/auth/users/login
 GET /http://localhost:8181/api/auth/users
 
 - must provide token
-  \*\* must be registered as admin
+  \*\* must be registered
 
 #### For Information about a user
 
@@ -104,24 +101,45 @@ DELETE /http://localhost:8181/api/auth/users/:id
 - must provide token
   \*\* must be the user who wants to be deleted or to be Admin.
 
+#### Get details about the provide token
+
+GET /http://localhost:8181/api/auth/users/userInfo/:id
+
+- must provide token
+
+#### Get the tasks of the user
+
+GET /http://localhost:8181/api/auth/users/usercard/:id
+
+- must provide token
+
 ### Cards:
 
 #### To receive all business cards
 
 GET /http://localhost:8181/api/cards
 
-#### To receive all business cards of the registered user
+- must provide token
+
+#### To receive all business cards the user created.
 
 GET /http://localhost:8181/api/cards/my-cards
 
 - must provide token
   You will need to provide a token to get an answer from this api
 
+#### To create a new card
+
+POST ///http://localhost:8181/api/cards/createCustomer
+
+-Must provide token.
+
 #### To get a business card of a specific business
 
 GET/ http://localhost:8181/api/cards/:id
 
-id of the card is required
+- must provide token
+  id of the card is required
 
 #### To create a new business card
 
@@ -130,7 +148,14 @@ POST /http://localhost:8181/api/cards
 request:
 
 - must provide token
-  \*\* must registered as biz user
+
+#### To get the favorited business cards of a user
+
+Get /http://localhost:8181/api/cards/fav-cards
+
+request:
+
+- must provide token
 
 #### To update a business card
 
@@ -162,3 +187,41 @@ DELETE / http://localhost:8181/api/cards/:id
 
 - must provide token
   \*\* must registered the use who created the card or admin user
+
+### Tasks:
+
+#### Get all tasks
+
+GET http://localhost:8181/api/cards/tasks
+
+- must provide token
+
+#### Create new Task
+
+POST //http://localhost:8181/api/cards/tasks/:id
+
+-must provide token.
+
+#### Get worker tasks
+
+GET //http://localhost:8181/api/cards/tasks/:id
+
+-must provide token.
+
+#### Finish task
+
+PUT //http://localhost:8181/api/cards/tasks/toupdate/:id
+
+-must provide token
+
+#### Get the tasks of the worker logged in
+
+GET /http://localhost:8181/api/cards/tasks/getmytasks/:id
+
+- must provide token.
+
+#### Get worker's done tasks
+
+GET /http://localhost:8181/api/cards/tasks/getmydonetasks/:id
+
+- must provide token.

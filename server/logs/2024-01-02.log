@@ -2,3 +2,35 @@ Timestamp: 2024-01-01T22:21:19.944Z
 Status Code: 400
 Error: ValidationError: "dateOpened" length must be at least 6 characters long
 
+Timestamp: 2024-01-02T11:44:22.204Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2024-01-02T11:46:27.998Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2024-01-02T11:48:21.919Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2024-01-02T11:51:18.362Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2024-01-02T11:52:24.385Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2024-01-02T11:55:03.026Z
+Status Code: 404
+Error: card not found
+
+Timestamp: 2024-01-02T11:55:30.438Z
+Status Code: 404
+Error: card not found
+
+Timestamp: 2024-01-02T12:10:41.502Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+

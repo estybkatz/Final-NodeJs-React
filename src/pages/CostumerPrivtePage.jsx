@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Card, CardHeader, CardContent, Typography, Box } from "@mui/material";
 import {
+  Grid,
   Button,
   Table,
   TableBody,
@@ -82,42 +83,53 @@ const CostumerPrivtePage = () => {
             <ArrowBackIcon />
           </Button>
           <Box>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  {columns.map((item) => (
-                    <TableCell key={item + Date.now()}>
-                      <Typography>{item}</Typography>
-                    </TableCell>
+            <Grid container className="tableContainer" spacing={2}>
+              <Grid item xs={12}>
+                <Table stickyHeader aria-label="sticky table">
+                  <TableHead>
+                    <TableRow>
+                      {columns.map((item) => (
+                        <TableCell key={item + Date.now()}>
+                          <Typography className="tableCell">{item}</Typography>
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  {taskData.map((item) => (
+                    <TableBody key={item._id}>
+                      <TableRow>
+                        <TableCell key={item.customerID + Date.now()}>
+                          {customers.map((item2) =>
+                            item2._id === item.customerID
+                              ? item2.firstName + " " + item2.lastName
+                              : null
+                          )}
+                        </TableCell>
+                        {/* <Grid item sm={4} xs={12} md={6}> */}
+                        <TableCell
+                          key={item.task + Date.now()}
+                          className="nowraps"
+                        >
+                          {item.task}
+                        </TableCell>
+                        {/* </Grid> */}
+                        <TableCell key={"open" + item.dateOpened + Date.now()}>
+                          {item.dateOpened}
+                        </TableCell>
+                        <TableCell
+                          key={"close" + item.lastDateToDo + Date.now()}
+                        >
+                          {item.lastDateToDo}
+                        </TableCell>
+                        <TableCell key={item.workerToDo + Date.now()}>
+                          {item.workerToDo}
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
                   ))}
-                </TableRow>
-              </TableHead>
-              {taskData.map((item) => (
-                <TableBody key={item._id}>
-                  <TableRow>
-                    <TableCell key={item.customerID + Date.now()}>
-                      {customers.map((item2) =>
-                        item2._id === item.customerID
-                          ? item2.firstName + " " + item2.lastName
-                          : null
-                      )}
-                    </TableCell>
-                    <TableCell key={item.task + Date.now()}>
-                      {item.task}
-                    </TableCell>
-                    <TableCell key={"open" + item.dateOpened + Date.now()}>
-                      {item.dateOpened}
-                    </TableCell>
-                    <TableCell key={"close" + item.lastDateToDo + Date.now()}>
-                      {item.lastDateToDo}
-                    </TableCell>
-                    <TableCell key={item.workerToDo + Date.now()}>
-                      {item.workerToDo}
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              ))}
-            </Table>
+                </Table>
+              </Grid>
+            </Grid>
           </Box>
         </CardContent>
       </Card>

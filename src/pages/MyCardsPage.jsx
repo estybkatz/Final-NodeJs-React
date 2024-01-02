@@ -85,6 +85,9 @@ const MyCardsPage = () => {
     return <CircularProgress />;
   }
 
+  const createTask = (id) => {
+    navigate(`/createTask/${id}`);
+  };
   return (
     <Box>
       {originalCardsArr.length === 0 ? (
@@ -97,7 +100,8 @@ const MyCardsPage = () => {
         </Box>
       ) : (
         <Box>
-          <h1>My Customers page</h1>
+          <h1>My Customers Page</h1>
+          <h3> All the customers I added</h3>
           <Button onClick={createCard}>
             <AddCircleIcon />
           </Button>
@@ -115,9 +119,11 @@ const MyCardsPage = () => {
                   subTitle={item.ReceptionDateAtTheOffice}
                   description={item.BusinessDescription}
                   onDelete={handleDeleteFromInitialCardsArr}
+                  onCreateTask={createTask}
                   onDeletefav={delete1}
                   onEdit={handleEditFromInitialCardsArr}
                   onInfo={handleMoreInformationFromInitialCardsArr}
+                  more_details={handleMoreInformationFromInitialCardsArr}
                   canEdit={payload && payload.isBusiness && payload.isAdmin}
                   canEditPrivate={payload && payload.isBusiness}
                   card={item}

@@ -10,7 +10,7 @@ const { logErrorToFile } = require("../../utils/fileLogger");
 
 // get all cards all
 //http://localhost:8181/api/cards
-router.get("/", async (req, res) => {
+router.get("/", authmw, async (req, res) => {
   try {
     const allCards = await cardsServiceModel.getAllCards();
     res.json(allCards);
@@ -60,7 +60,7 @@ router.get(
 );
 // all
 //http://localhost:8181/api/cards/:id
-router.get("/:id", async (req, res) => {
+router.get("/:id", authmw, async (req, res) => {
   try {
     await cardsValidationService.idUserValidation(req.params.id);
     const cardFromDB = await cardsServiceModel.getCardById(req.params.id);
@@ -72,26 +72,21 @@ router.get("/:id", async (req, res) => {
     res.status(400).json(err);
   }
 });
-// create cards, biz only
+// create cards, admin only
 //http://localhost:8181/api/cards/createCustomer
-router.post(
-  "/createCustomer",
-  authmw,
-  permissionsMiddleware(true, true, false),
-  async (req, res) => {
-    try {
-      console.log(req.body);
-      let card = await cardsValidationService.createCardValidation(req.body);
-      let normalCard = await normalizeCard(req.body, req.userData._id);
-      const dataFromMongoose = await cardsServiceModel.createCard(normalCard);
+router.post("/createCustomer", authmw, async (req, res) => {
+  try {
+    console.log(req.body);
+    let card = await cardsValidationService.createCardValidation(req.body);
+    let normalCard = await normalizeCard(req.body, req.userData._id);
+    const dataFromMongoose = await cardsServiceModel.createCard(normalCard);
 
-      res.json({ msg: "ok" });
-    } catch (err) {
-      logErrorToFile(err, 400);
-      res.status(400).json(err);
-    }
+    res.json({ msg: "ok" });
+  } catch (err) {
+    logErrorToFile(err, 400);
+    res.status(400).json(err);
   }
-);
+});
 //edit
 // owner
 //http://localhost:8181/api/cards/:id

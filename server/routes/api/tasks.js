@@ -9,7 +9,7 @@ const tasksServiceModel = require("../../model/taskService/taskService");
 
 // get all tasks, all
 //http://localhost:8181/api/cards/tasks
-router.get("/", async (req, res) => {
+router.get("/", authmw, async (req, res) => {
   try {
     const allTasks = await tasksServiceModel.getAlltasks();
 
@@ -20,6 +20,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//create new tasks
 //http://localhost:8181/api/cards/tasks/:id
 router.post("/:id", authmw, async (req, res) => {
   try {
@@ -40,7 +41,7 @@ router.post("/:id", authmw, async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+//get tasks of a given worker
 //http://localhost:8181/api/cards/tasks/:id
 router.get("/:id", authmw, async (req, res) => {
   try {
@@ -56,13 +57,12 @@ router.get("/:id", authmw, async (req, res) => {
     res.status(400).json(err);
   }
 });
+// Finish task
 //http://localhost:8181/api/cards/tasks/toupdate/:id
 router.put("/toupdate/:id", authmw, async (req, res) => {
   try {
     console.log("req", req.params.id);
     let params = await cardsValidationService.idUserValidation(req.params.id);
-    console.log("PARAMS", params);
-    console.log("req111", req.body);
     let taskToUpdate = await tasksServiceModel.updateTask(
       req.params.id,
       req.body
@@ -74,12 +74,12 @@ router.put("/toupdate/:id", authmw, async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+//Get the tasks of a worker
 //http://localhost:8181/api/cards/tasks/getmytasks/:id
 router.get(
   "/getmytasks/:id",
   authmw,
-  // permissionsMiddlewareUser(false, false, true),
+
   async (req, res) => {
     try {
       let myTasks = await tasksServiceModel.getMyTasks(req.userData._id);
@@ -91,22 +91,16 @@ router.get(
     }
   }
 );
+//get worker's done tasks
 //http://localhost:8181/api/cards/tasks/getmydonetasks/:id
-router.get(
-  "/getmydonetasks/:id",
-  authmw,
+router.get("/getmydonetasks/:id", authmw, async (req, res) => {
+  try {
+    let myDoneTasks = await tasksServiceModel.getMyDoneTasks(req.userData._id);
 
-  async (req, res) => {
-    try {
-      let myDoneTasks = await tasksServiceModel.getMyDoneTasks(
-        req.userData._id
-      );
-
-      res.json(myDoneTasks);
-    } catch (err) {
-      logErrorToFile(err, 400);
-      res.status(400).json(err);
-    }
+    res.json(myDoneTasks);
+  } catch (err) {
+    logErrorToFile(err, 400);
+    res.status(400).json(err);
   }
-);
+});
 module.exports = router;

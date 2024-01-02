@@ -1,5 +1,5 @@
 const Card = require("./Card");
-
+const Tasks = require("../tasks/Tasks");
 const createCard = (cardToSave) => {
   let card = new Card(cardToSave);
   return card.save();
@@ -23,7 +23,14 @@ const updateCard = (id, cardToUpdate) => {
   });
 };
 
-const deleteCard = (id) => {
+const deleteCard = async (id) => {
+  const card = Card.findOne(id);
+  if (!card) {
+    return null;
+  }
+
+  await Tasks.deleteMany({ customerID: id });
+
   return Card.findByIdAndDelete(id);
 };
 

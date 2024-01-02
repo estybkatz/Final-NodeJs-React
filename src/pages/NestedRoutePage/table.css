@@ -39,7 +39,7 @@
     max-width: 100%;
   }
   .tableCell {
-    font-size: 1px;
+    /* font-size: 0px; */
     display: none;
   }
   .tableCellNotNone {
@@ -50,3 +50,8 @@
     padding: 1px !important;
   }
 }
+/* .nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */

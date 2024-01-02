@@ -19,18 +19,22 @@ const User = require("../../model/mongodb/users/Users");
 
 //register
 //http://localhost:8181/api/auth/users
-router.post("/users/register", async (req, res) => {
-  try {
-    await registerUserValidation(req.body);
-    req.body.password = await hashService.generateHash(req.body.password);
-    req.body = normalizeUser(req.body);
-    await usersServiceModel.registerUser(req.body);
-    res.json({ msg: "register success" });
-  } catch (err) {
-    logErrorToFile(err, 400);
-    res.status(400).json(err);
+router.post(
+  "/users/register",
+  permissionsMiddlewareUser(false, true, false),
+  async (req, res) => {
+    try {
+      await registerUserValidation(req.body);
+      req.body.password = await hashService.generateHash(req.body.password);
+      req.body = normalizeUser(req.body);
+      await usersServiceModel.registerUser(req.body);
+      res.json({ msg: "register success" });
+    } catch (err) {
+      logErrorToFile(err, 400);
+      res.status(400).json(err);
+    }
   }
-});
+);
 
 //http://localhost:8181/api/auth/users/login
 router.post("/users/login", async (req, res) => {
@@ -80,7 +84,7 @@ router.post("/users/login", async (req, res) => {
   }
 });
 
-//get all users,admin
+//get all users
 //http://localhost:8181/api/auth/users
 router.get("/users", authmw, async (req, res) => {
   try {
@@ -92,27 +96,32 @@ router.get("/users", authmw, async (req, res) => {
   }
 });
 //localhost:8181/api/auth/users/userInfo
-router.get("/users/userInfo/:id", async (req, res) => {
-  try {
-    let user = await usersServiceModel.getUserdById(req.params.id);
-    //delete user.password;
-    delete user.timeStamps;
-    delete user.blockedUntil;
-    delete user.triesTimes;
-    delete user.createdAt;
+router.get(
+  "/users/userInfo/:id",
+  authmw,
+  permissionsMiddlewareUser(false, true, true),
+  async (req, res) => {
+    try {
+      let user = await usersServiceModel.getUserdById(req.params.id);
+      //delete user.password;
+      delete user.timeStamps;
+      delete user.blockedUntil;
+      delete user.triesTimes;
+      delete user.createdAt;
 
-    res.send(user);
-  } catch (err) {
-    logErrorToFile(err, 400);
-    res.status(500).send(err);
+      res.send(user);
+    } catch (err) {
+      logErrorToFile(err, 400);
+      res.status(500).send(err);
+    }
   }
-});
+);
 
 //http://localhost:8181/api/auth/users/usercard/:id
 router.get(
   "/users/usercard/:id",
   authmw,
-
+  permissionsMiddlewareUser(false, true, true),
   async (req, res) => {
     try {
       let params = await idUserValidation(req.params.id);
@@ -154,7 +163,7 @@ router.get(
 router.put(
   "/users/:id",
   authmw,
-  permissionsMiddlewareUser(false, false, true),
+  permissionsMiddlewareUser(false, true, true),
   async (req, res) => {
     let num = 400;
     try {
@@ -180,7 +189,7 @@ router.put(
 router.patch(
   "/users/:id",
   authmw,
-  permissionsMiddlewareUser(false, false, true),
+  permissionsMiddlewareUser(false, true, false),
   async (req, res) => {
     try {
       await idUserValidation(req.params.id);

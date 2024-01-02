@@ -3,7 +3,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Card, CardHeader, CardContent, Typography, Box } from "@mui/material";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  Typography,
+  Box,
+  Grid,
+} from "@mui/material";
 import { Checkbox, FormControlLabel } from "@mui/material";
 import {
   Button,
@@ -14,6 +21,7 @@ import {
   TableRow,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import "./NestedRoutePage/table.css";
 const WorkerPrivtePage = () => {
   const [workerData, setWorkerData] = useState(null);
   const [taskData, setTaskData] = useState([]);
@@ -112,65 +120,75 @@ const WorkerPrivtePage = () => {
             <ArrowBackIcon />
           </Button>
           <Box>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  {columns.map((item) => (
-                    <TableCell key={item + "Row" + Date.now()}>
-                      <Typography>{item}</Typography>
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              {taskData.map((item) => (
-                <TableBody key={item._id}>
-                  <TableRow>
-                    <TableCell key={item.customerID + Date.now()}>
-                      {customers.map((item2) =>
-                        item2._id === item.customerID
-                          ? item2.firstName + " " + item2.lastName
-                          : null
-                      )}
-                    </TableCell>
-                    <TableCell key={item.task + Date.now()}>
-                      {item.task}
-                    </TableCell>
-                    <TableCell key={"open" + item.dateOpened + Date.now()}>
-                      {item.dateOpened}
-                    </TableCell>
-                    <TableCell key={"close" + item.lastDateToDo + Date.now()}>
-                      {item.lastDateToDo}
-                    </TableCell>
-                    <TableCell key={item.done + Date.now()}>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            key={"check" + Date.now}
-                            id="done"
-                            value={item.done}
-                            checked={item.done}
-                            color="primary"
-                            onClick={() => handleDoneChange(item._id)}
+            <Grid container className="tableContainer" spacing={2}>
+              <Grid item xs={12}>
+                <Table stickyHeader aria-label="sticky table">
+                  <TableHead>
+                    <TableRow>
+                      {columns.map((item) => (
+                        <TableCell key={item + "Row" + Date.now()}>
+                          <Typography className="tableCell">{item}</Typography>
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  {taskData.map((item) => (
+                    <TableBody key={item._id}>
+                      <TableRow>
+                        <TableCell key={item.customerID + Date.now()}>
+                          {customers.map((item2) =>
+                            item2._id === item.customerID
+                              ? item2.firstName + " " + item2.lastName
+                              : null
+                          )}
+                        </TableCell>
+                        <TableCell key={item.task + Date.now()} className="">
+                          {item.task}
+                        </TableCell>
+                        <TableCell key={"open" + item.dateOpened + Date.now()}>
+                          <Typography className="tableCell">
+                            {item.dateOpened}
+                          </Typography>
+                        </TableCell>
+                        <TableCell
+                          key={"close" + item.lastDateToDo + Date.now()}
+                        >
+                          <Typography className="tableCell">
+                            {item.lastDateToDo}{" "}
+                          </Typography>
+                        </TableCell>
+                        <TableCell key={item.done + Date.now()}>
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                key={"check" + Date.now}
+                                id="done"
+                                value={item.done}
+                                checked={item.done}
+                                color="primary"
+                                onClick={() => handleDoneChange(item._id)}
+                              />
+                            }
+                            label="done"
                           />
-                        }
-                        label="done"
-                      />
-                    </TableCell>
-                    <TableCell key={"update" + item._id + Date.now()}>
-                      <Button
-                        variant="contained"
-                        fullWidth
-                        sx={{ mt: 1, mb: 1 }}
-                        color="primary"
-                        onClick={() => handleSendData(item._id, item)}
-                      >
-                        Updating
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              ))}
-            </Table>
+                        </TableCell>
+                        <TableCell key={"update" + item._id + Date.now()}>
+                          <Button
+                            variant="contained"
+                            fullWidth
+                            sx={{ mt: 1, mb: 1 }}
+                            color="primary"
+                            onClick={() => handleSendData(item._id, item)}
+                          >
+                            Updating
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  ))}
+                </Table>
+              </Grid>
+            </Grid>
           </Box>
         </CardContent>
       </Card>

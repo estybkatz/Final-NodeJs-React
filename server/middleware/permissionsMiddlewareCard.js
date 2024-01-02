@@ -31,7 +31,7 @@ const checkIfOwner = async (iduser, idcard, res, next) => {
 
 const permissionsMiddleware = (isBiz, isAdmin, isOwner) => {
   return (req, res, next) => {
-    if (!req.userData.isAdmin) {
+    if (!req.userData) {
       logErrorToFile("must provide userData", 401);
       throw new CustomError("must provide userData");
     }

@@ -80,7 +80,7 @@ const HomePage = () => {
   const handleMoreInformationFromInitialCardsArr = (id) => {
     navigate(`/MInfo/${id}`);
   };
-  const createtask = (id) => {
+  const createTask = (id) => {
     navigate(`/createTask/${id}`);
   };
   if (!cardsArr) {
@@ -145,7 +145,7 @@ const HomePage = () => {
                     onEdit={handleEditFromInitialCardsArr}
                     onInfo={handleMoreInformationFromInitialCardsArr}
                     canEdit={payload && payload.isBusiness && payload.isAdmin}
-                    onCreateTask={createtask}
+                    onCreateTask={createTask}
                     canEditPrivate={payload && payload.isBusiness}
                     card={item}
                     user_id={item.user_id}

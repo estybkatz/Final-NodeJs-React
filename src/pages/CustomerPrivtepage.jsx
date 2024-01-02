@@ -128,38 +128,47 @@ const CostumerPrivtePage = () => {
                   ))}
                 </TableRow>
               </TableHead>
-
-              <TableBody key="taskBody">
-                {taskData.map((item) => (
-                  <TableRow key={item._id + Date.now()}>
-                    <TableCell key={item.customerID + item._id + Date.now()}>
-                      {customers.map((item2) =>
-                        item2._id === item.customerID
-                          ? item2.firstName + " " + item2.lastName
-                          : null
-                      )}
-                    </TableCell>
-                    <TableCell key={"task" + item.task + Date.now()}>
-                      {item.task}
-                    </TableCell>
-                    <TableCell key={"date open" + item.dateOpened + Date.now()}>
-                      {item.dateOpened}
-                    </TableCell>
-                    <TableCell
-                      key={"last date" + item.lastDateToDo + Date.now()}
-                    >
-                      {item.lastDateToDo}
-                    </TableCell>
-                    <TableCell key={"worker" + item.workerToDo + Date.now()}>
-                      {workersArr.map((item2) =>
-                        item2._id === item.workerToDo
-                          ? item2.name.firstName + " " + item2.name.lastName
-                          : null
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
+              {taskData ? (
+                <TableBody key="taskBody">
+                  {taskData.map((item) => (
+                    <TableRow key={item._id + Date.now()}>
+                      <TableCell key={item.customerID + item._id + Date.now()}>
+                        {customers.map((item2) =>
+                          item2._id === item.customerID
+                            ? item2.firstName + " " + item2.lastName
+                            : null
+                        )}
+                      </TableCell>
+                      <TableCell key={"task" + item.task + Date.now()}>
+                        {item.task}
+                      </TableCell>
+                      <TableCell
+                        key={"date open" + item.dateOpened + Date.now()}
+                      >
+                        {item.dateOpened}
+                      </TableCell>
+                      <TableCell
+                        key={"last date" + item.lastDateToDo + Date.now()}
+                      >
+                        {item.lastDateToDo}
+                      </TableCell>
+                      <TableCell key={"worker" + item.workerToDo + Date.now()}>
+                        {workersArr
+                          ? workersArr.map((item2) =>
+                              item2._id === item.workerToDo
+                                ? item2.name.firstName +
+                                  " " +
+                                  item2.name.lastName
+                                : null
+                            )
+                          : ""}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              ) : (
+                ""
+              )}
             </Table>
           </Box>
         </CardContent>

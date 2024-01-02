@@ -41,12 +41,7 @@ const Router = () => {
       <Route
         path={ROUTES.MYDONETASK}
         element={
-          <SuperProtectedRoute
-            isAdmin={true}
-            isBiz={false}
-            isLoggedIn={true}
-            element={<MyDoneTasksPage />}
-          />
+          <ProtectedRoute isLoggedIn={true} element={<MyDoneTasksPage />} />
         }
       />
       <Route

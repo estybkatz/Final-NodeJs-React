@@ -33,5 +33,5 @@ const initialData = async () => {
   }
 };
 
-// initialData();
+initialData();
 module.exports = initialData;
