@@ -29,33 +29,15 @@ const registerSchema = Joi.object({
   password: Joi.string()
     .regex(
       new RegExp(
-        // /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
       )
     )
     .required()
     .messages({
       "string.pattern.base":
-        "the password should be supper protected, this mean that its must contain an uppercase letter and a lowercase letter, and 4 numbers, and must be atleast of size 8",
+        "the password should be supper protected, this mean that its must contain an uppercase letter and a lowercase letter, and 4 numbers, and must be at least of size 8",
     }),
 
-  // image: Joi.object()
-  //   .keys({
-  //     url: Joi.string()
-  //       .regex(
-  //         new RegExp(
-  //           /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/
-  //         )
-  //       )
-  //       .allow("")
-  //       .required()
-  //       .messages({
-  //         "string.pattern.base":
-  //           "The address must start with http// and contain letters and numbers",
-  //       }),
-  //     alt: Joi.string().min(2).max(256).allow("").required(),
-  //   })
-  //   .required(),
   address: Joi.object()
     .keys({
       state: Joi.string().min(2).max(256).allow("").required(),
@@ -67,7 +49,6 @@ const registerSchema = Joi.object({
     })
     .required(),
   isAdmin: Joi.boolean().allow(""),
-  //isBusiness: Joi.boolean().required(),
 });
 
 const validateRegisterSchema = (userInput) =>

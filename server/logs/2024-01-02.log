@@ -1,0 +1,4 @@
+Timestamp: 2024-01-01T22:21:19.944Z
+Status Code: 400
+Error: ValidationError: "dateOpened" length must be at least 6 characters long
+

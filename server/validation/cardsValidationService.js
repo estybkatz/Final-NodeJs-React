@@ -11,14 +11,12 @@ const createCardValidation = (userInput) => {
 };
 const idUserValidation = (userInput) => {
   if (validatorOption === "Joi") {
-    console.log(userInput, 2);
     return joiIdValidation.validateIdSchema(userInput);
   }
   throw new Error("validator undefined");
 };
 const tasksValidation = (userInput) => {
   if (validatorOption === "Joi") {
-    console.log(userInput, 2);
     return joiTaskValidation.taskValidationSchema(userInput);
   }
   throw new Error("validator undefined");

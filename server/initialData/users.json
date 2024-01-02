@@ -9,7 +9,7 @@
     "email": "johnie@gmail.com",
     "password": "Aa123456!",
     "address": {
-      "state": "not defined",
+      "state": "Asia",
       "country": "Israel",
       "city": "Ashkeluna",
       "street": "nof ha hof",
@@ -24,18 +24,18 @@
 
   {
     "name": {
-      "firstName": "john",
-      "middleName": "johny",
-      "lastName": "wich"
+      "firstName": "john2",
+      "middleName": "johny2",
+      "lastName": "wich2"
     },
     "phone": "0500000000",
     "email": "johnSch@gmail.com",
     "password": "Aa123456!",
     "address": {
-      "state": "not defined",
+      "state": "Asia",
       "country": "Israel",
       "city": "Ashkeluna",
-      "street": "nof ha hof",
+      "street": "nof ha hof2",
       "houseNumber": 255,
       "zip": 0,
       "password": "Aa123456!"
@@ -46,24 +46,24 @@
   },
   {
     "name": {
-      "firstName": "john",
-      "middleName": "johny",
-      "lastName": "wich"
+      "firstName": "john3",
+      "middleName": "johny3",
+      "lastName": "wich3"
     },
     "phone": "0500000000",
     "email": "johnDZS@gmail.com",
     "password": "Aa123456!",
     "address": {
-      "state": "not defined",
+      "state": "Asia",
       "country": "Israel",
       "city": "Ashkeluna",
-      "street": "nof ha hof",
+      "street": "nof ha hof3",
       "houseNumber": 255,
       "zip": 0,
       "password": "Aa123456!"
     },
 
-    "isAdmin": true,
-    "isBusiness": false
+    "isAdmin": false,
+    "isBusiness": true
   }
 ]

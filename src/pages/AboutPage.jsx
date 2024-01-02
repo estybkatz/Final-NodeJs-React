@@ -1,8 +1,4 @@
 import { Container, Typography } from "@mui/material";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import CreateIcon from "@mui/icons-material/Create";
 
 import React from "react";
 const AboutPage = () => {
@@ -10,10 +6,8 @@ const AboutPage = () => {
     <Container maxWidth="md">
       <Typography variant="h1">About Us</Typography>
       <Typography className="aboutText">
-        <p>
-          Welcome to the Worker Management System project! i'm excited to share
-          more about the project .
-        </p>
+        Welcome to the Worker Management System project! i'm excited to share
+        more about the project .
         <br />
         <br />
       </Typography>
@@ -44,21 +38,20 @@ const AboutPage = () => {
         Our Goals
       </Typography>
       <Typography className="aboutText">
-        <ul>
-          <li>
-            • <strong>Efficiency:</strong> Simplify worker management tasks and
-            improve overall efficiency in task allocation and completion.
-          </li>
-          <li>
-            • <strong>Transparency:</strong> Provide transparency in task status
-            and worker performance, empowering administrators to make informed
-            decisions.
-          </li>
-          <li>
-            • <strong>Scalability:</strong> Design the system to be scalable,
-            accommodating the growth of worker teams and task complexity.
-          </li>
-        </ul>
+        <li>
+          • <strong>Efficiency:</strong> Simplify worker management tasks and
+          improve overall efficiency in task allocation and completion.
+        </li>
+        <li>
+          • <strong>Transparency:</strong> Provide transparency in task status
+          and worker performance, empowering administrators to make informed
+          decisions.
+        </li>
+        <li>
+          • <strong>Scalability:</strong> Design the system to be scalable,
+          accommodating the growth of worker teams and task complexity.
+        </li>
+
         <br />
         <br />
       </Typography>
@@ -67,31 +60,27 @@ const AboutPage = () => {
         Contact Me
       </Typography>
       <Typography className="aboutText">
-        <p>
-          I appreciate your interest in the Worker Management System project. If
-          you have questions, suggestions, or would like to contribute, feel
-          free to contact me
-          <ul>
-            <li>
-              <strong>Email:</strong>{" "}
-              <a href="mailto:estybkatz@gmail.com">estybkatz@gmail.com</a>
-            </li>
-            <li>
-              <strong>GitHub:</strong>{" "}
-              <a
-                href="https://github.com/estybkatz"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub Profile
-              </a>
-            </li>
-          </ul>
-          We value your input and are always looking for ways to improve our
-          platform and better serve our users. <br />
-          <br />
-          <br />
-        </p>
+        I appreciate your interest in the Worker Management System project. If
+        you have questions, suggestions, or would like to contribute, feel free
+        to contact me
+        <li>
+          <strong>Email:</strong>{" "}
+          <a href="mailto:estybkatz@gmail.com">estybkatz@gmail.com</a>
+        </li>
+        <li>
+          <strong>GitHub:</strong>{" "}
+          <a
+            href="https://github.com/estybkatz"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub Profile
+          </a>
+        </li>
+        We value your input and are always looking for ways to improve our
+        platform and better serve our users. <br />
+        <br />
+        <br />
         <br />
         <br />
       </Typography>
@@ -135,12 +124,13 @@ const AboutPage = () => {
         The Card Pages
       </Typography>
       <Typography className="aboutText">
-        The site has 4 different ways to view cards.
+        Every customer has his own card.
+        <br />
+        The site has 2 different ways to view cards.
         <br /> All the cards in the homepage.
         <br />
         The Fav Cards page, in which you can view your favorite cards.
         <br />
-        My Cards page in which you can view the cards you created. <br /> <br />
       </Typography>
       <Typography variant="h4" color="primary">
         The Footer
@@ -153,33 +143,23 @@ const AboutPage = () => {
         User types and options
       </Typography>
       <Typography className="aboutText">
-        Available options for users This site has 3 types of users, a regular
-        user, a business user and an admin user.
+        Available options for users: This site has 2 types of users, a regular
+        user, and an admin user.
         <br />
-        All registered users can favorite cards, and view only the cards they
-        favorited. A favorited card has the heart shaped favorite button colored
+        All registered users can favorite cards and view only the cards they
+        favorited. A favorited card has the heart-shaped favorite button colored
         red, while an unfavorited card has it colored blue. <br /> A user can
-        view their favorite cards using favCards page.
+        view their favorite cards using the Fav Cards page.
         <br />
-        A business user can add new cards using the <AddCircleIcon /> button,
-        and view the cards he added in the My Cards page.
+        An admin user can register new users and has a management interface of
+        all the users, tasks, and customers.
         <br />
-        After creating a card, a business user can edit or delete the cards he
+        After creating a card, an admin user can edit or delete the cards they
         made.
         <br />
-        An Admin user is a business user, which can also delete cards that any
-        user made.
-        <br />
-        When registering you may choose to be a business user or a regular user,
-        you cannot become an admin user while registering. To become an admin,
-        please contact us by email.
-        <br /> Any user can edit his profile pages. <br /> <br />
+        To register, contact the admin by email.
+        <br /> Any user can edit their profile pages. <br /> <br />
       </Typography>
-      <Typography variant="h2" position="center" color="red">
-        Here is an example of a card
-      </Typography>
-      <img src="/assets/images/card.PNG" alt="card" className="aboutCard" />
-      {/* <img src="/assets/images/card.PNG" alt="card" /> */}
     </Container>
   );
 };

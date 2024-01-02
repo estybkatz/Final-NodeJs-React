@@ -18,7 +18,6 @@ const getUserdById = (id) => {
   return User.findById(id);
 };
 const updateUser = (id, userToUpdate) => {
-  //normalize user
   return User.findByIdAndUpdate(id, userToUpdate, {
     new: true,
   });
@@ -33,10 +32,8 @@ const updateTimeStamps = (id) => {
 };
 
 const getWorkerTasks2 = (workerTodo) => {
-  console.log("hloooooooworker");
-  console.log("workerTodo", workerTodo);
   const taskList = Task.find({ workerTodo: workerTodo });
-  console.log("task", Task);
+
   return taskList;
 };
 module.exports = {

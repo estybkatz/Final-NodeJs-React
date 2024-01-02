@@ -30,19 +30,15 @@ const RegisterPage = () => {
     zip: "",
     isAdmin: false,
   });
+  const navigate = useNavigate();
   let joiResponse = validateRegisterSchema(inputState);
   const [inputsErrorState, setinputsErrorState] = useState(null);
-  const navigate = useNavigate();
   const handeleBtnClick = async (ev) => {
     try {
       joiResponse = validateRegisterSchema(inputState);
       if (joiResponse) {
         return;
       }
-      // if (inputState.zipCode == "") {
-      //   inputState.zipCode = null;
-      // }
-
       await axios.post("auth/users/register", {
         name: {
           firstName: inputState.firstName,
@@ -52,10 +48,6 @@ const RegisterPage = () => {
         phone: inputState.phone,
         email: inputState.email,
         password: inputState.password,
-        // image: {
-        //   url: inputState.url,
-        //   alt: inputState.alt,
-        // },
 
         address: {
           state: inputState.state,
@@ -68,7 +60,7 @@ const RegisterPage = () => {
         isAdmin: inputState.isAdmin,
       });
       toast.success("Employee registration was successfully completed");
-      // navigate(ROUTES.LOGIN);
+      navigate(ROUTES.LOGIN);
     } catch {
       toast.error("registered was not done");
     }
@@ -101,27 +93,6 @@ const RegisterPage = () => {
       houseNumber: "",
       zip: "",
       isAdmin: false,
-      // name: {
-      //   firstName: inputState.firstName,
-      //   middleName: inputState.middleName,
-      //   lastName: inputState.lastName,
-      // },
-      // phone: inputState.phone,
-      // email: inputState.email,
-      // password: inputState.password,
-      // image: {
-      //   url: inputState.imageUrl,
-      //   alt: inputState.imageAlt,
-      // },
-      // state: inputState.state,
-      // address: {
-      //   country: inputState.country,
-      //   city: inputState.city,
-      //   street: inputState.street,
-      //   houseNumber: inputState.houseNumber,
-      //   zip: inputState.zip,
-      // },
-      // isAdmin: inputState.isAdmin,
     };
     setInputState(newInputState);
     joiResponse = validateRegisterSchema(newInputState);

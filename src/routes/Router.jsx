@@ -22,20 +22,13 @@ import SandboxPage from "../pages/SandboxPage";
 import MoreInformationPage from "../pages/MoreInformation";
 import { useSelector } from "react-redux";
 import EditProtectedRoute from "../components/EditProtectedRoute";
-import TaskComponent from "../components/TaskComponennt";
 import TasksPage from "../pages/TasksPage";
 import CostumerPrivtePage from "../pages/CustomerPrivtepage";
 import WorkerPrivtePage from "../pages/workerTasksPrivate";
 import MyTasksPage from "../pages/MyTasksPage";
 import MyDoneTasksPage from "../pages/MyDoneTsksPage";
-//import CostumerPrivtePage from "../pages/CustomerPrivatePage";
-//import CostumerPrivatePage from "../pages/CustomerPrivtePage";
-//import CustomerPrivtePage from "../pages/CustomerPrivtePage";
 
 const Router = () => {
-  const isLoggedIn = useSelector(
-    (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
-  );
   return (
     <Routes>
       <Route path={ROUTES.HOME} element={<HomePage />} />
@@ -92,12 +85,24 @@ const Router = () => {
       <Route
         path={ROUTES.CREATE}
         element={
-          <ProtectedRoute isLoggedIn={true} element={<CreateCardPage />} />
+          <SuperProtectedRoute
+            isAdmin={true}
+            isBiz={false}
+            isLoggedIn={true}
+            element={<CreateCardPage />}
+          />
         }
       />
       <Route
         path={ROUTES.MYCARDS}
-        element={<ProtectedRoute isLoggedIn={true} element={<MyCardsPage />} />}
+        element={
+          <SuperProtectedRoute
+            isAdmin={true}
+            isBiz={false}
+            isLoggedIn={true}
+            element={<MyCardsPage />}
+          />
+        }
       />
       <Route
         path={ROUTES.SANDBOX}
@@ -109,12 +114,6 @@ const Router = () => {
           />
         }
       />
-      {/* <Route
-        path={ROUTES.MOREINFORMATIOMPAGE}
-        element={
-        <ProtectedRoute isLoggedIn={true} element={<MoreInformationPage />}
-        }
-       /> */}
 
       <Route
         path={ROUTES.LOGOUT}
@@ -140,7 +139,6 @@ const Router = () => {
         element={
           <SuperProtectedRoute
             isAdmin={true}
-            // isBiz={true}
             isLoggedIn={false}
             element={<RegisterPage />}
           />

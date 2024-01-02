@@ -43,15 +43,14 @@ const authedPages = [
 ];
 
 //admin/biz pages
-const BizPages = [
-  {
-    label: "MY CARDS",
-    url: ROUTES.MYCARDS,
-  },
-];
+const BizPages = [];
 
 const AdminPages = [
   { label: "MANAGEMENT-INTERFACE", url: ROUTES.SANDBOX },
+  {
+    label: "MY CUSTOMERS",
+    url: ROUTES.MYCARDS,
+  },
   {
     label: "REGISTER",
     url: ROUTES.REGISTER,
@@ -90,7 +89,6 @@ const MuiNavbar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar>
-          {/* main navbar */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <NavArrayComponent linkArray={pages} />
             <NavArrayComponent
@@ -125,7 +123,6 @@ const MuiNavbar = () => {
           </Box>
           {isLoggedIn ? <AvatarComponent logoutClick={logoutClick} /> : ""}
 
-          {/*hamburger with menu */}
           <Box
             sx={{
               flexGrow: 1,
@@ -176,7 +173,6 @@ const MuiNavbar = () => {
                 isMenu={true}
                 onClick={handleCloseNavMenu}
               />
-              {/* {isLoggedIn ? <AvatarComponent logoutClick={logoutClick} /> : ""} */}
             </Menu>
           </Box>
         </Toolbar>

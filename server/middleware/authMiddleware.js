@@ -3,7 +3,6 @@ const CustomError = require("../utils/CustomError");
 const { logErrorToFile } = require("../utils/fileLogger");
 
 const authMiddleware = async (req, res, next) => {
-  console.log("hi");
   try {
     if (!req.headers["x-auth-token"]) {
       throw new CustomError("please provide token");
@@ -11,7 +10,7 @@ const authMiddleware = async (req, res, next) => {
 
     const userData = await verifyToken(req.headers["x-auth-token"]);
     req.userData = userData;
-    console.log("data", userData);
+
     next();
   } catch (err) {
     let errToSend;

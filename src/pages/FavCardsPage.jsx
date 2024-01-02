@@ -15,18 +15,12 @@ const FavCardsPage = () => {
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
 
   useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
-
     axios
       .get("cards/fav-cards")
 
       .then(({ data }) => {
         filterFunc(data);
       })
-
       .catch((err) => {
         toast.error("Oops");
       });
@@ -45,18 +39,12 @@ const FavCardsPage = () => {
       filter = qparams.filter;
     }
     if (!originalCardsArr && data) {
-      /*
-        when component loaded and states not loaded
-      */
       setOriginalCardsArr(data);
       setCardsArr(data.filter((card) => card.firstName.startsWith(filter)));
 
       return;
     }
     if (originalCardsArr) {
-      /*
-        when all loaded and states loaded
-      */
       let newOriginalCardsArr = JSON.parse(JSON.stringify(originalCardsArr));
       setCardsArr(
         newOriginalCardsArr.filter((card) => card.firstName.startsWith(filter))
@@ -81,7 +69,7 @@ const FavCardsPage = () => {
   };
   const handleEditFromInitialCardsArr = (id) => {
     const selectedCards = cardsArr.find((card) => card._id == id);
-    navigate(`/edit/${id}`, { state: { user_id: selectedCards.user_id } }); //localhost:3000/edit/123213
+    navigate(`/edit/${id}`, { state: { user_id: selectedCards.user_id } });
   };
   const handleMoreInformationFromInitialCardsArr = (id) => {
     navigate(`/MInfo/${id}`);
@@ -119,13 +107,11 @@ const FavCardsPage = () => {
                   subTitle={item.ReceptionDateAtTheOffice}
                   description={item.BusinessDescription}
                   onInfo={handleMoreInformationFromInitialCardsArr}
-                  //img={item.image ? item.image.url : ""}
                   onDeletefav={delete1}
                   onDelete={handleDeleteFromInitialCardsArr}
                   onEdit={handleEditFromInitialCardsArr}
                   canEdit={payload && (payload.isBusiness || payload.isAdmin)}
                   canEditPrivate={payload && payload.isBusiness}
-                  //user_id={item.user_id}
                   isFav={true}
                   more_details={handleDetailsBtnClick}
                 />

@@ -18,6 +18,10 @@
 @media (max-width: 806px) {
   .tableContainer {
     max-width: 100%;
+    /* display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    flex-wrap: wrap; */
   }
   .tableCell {
     font-size: 1px;

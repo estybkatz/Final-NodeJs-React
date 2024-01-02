@@ -70,15 +70,10 @@ const CardComponent = ({
     }
   };
   const openModal = () => {
-    //setIsOpen(true);
-
     onCreateTask(id);
   };
   return (
     <Card square raised>
-      {/* <CardActionArea onClick={handleInfoBtnClick}>
-        <CardMedia component="img" image={img} className="cardMedia" />
-      </CardActionArea> */}
       <CardHeader
         title={title}
         subheader={subTitle}
@@ -126,14 +121,12 @@ const CardComponent = ({
             ""
           )}
         </Box>
-        {/* <Box sx={{ display: "flex", flex: 1, justifyContent: "flex-end" }}> */}
         <IconButton
           color="white"
           aria-label="add to shopping cart"
           onClick={openModal}
         >
           Add-Task
-          {/* <CallIcon /> */}
         </IconButton>
         {isLoggedIn ? (
           <IconButton
@@ -148,7 +141,6 @@ const CardComponent = ({
         ) : (
           ""
         )}
-        {/* </Box> */}
         <Box>
           {payload ? (
             <IconButton onClick={handleDetailsBtnClick}>

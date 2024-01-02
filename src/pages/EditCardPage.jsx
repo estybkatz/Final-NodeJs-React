@@ -10,8 +10,6 @@ import Alert from "@mui/material/Alert";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-
-import ROUTES from "../routes/ROUTES";
 import validateEditSchema, {
   validateEditCardParamsSchema,
 } from "../validation/editValidation";
@@ -30,7 +28,6 @@ const EditCardPage = () => {
       try {
         const errors = validateEditCardParamsSchema({ id });
         if (errors) {
-          // there was errors = incorrect id
           navigate("/");
           return;
         }
@@ -38,19 +35,9 @@ const EditCardPage = () => {
         let newInputState = {
           ...data,
         };
-        if (data.image && data.image.url) {
-          newInputState.url = data.image.url;
-        } else {
-          newInputState.url = "";
-        }
-        if (data.image && data.image.alt) {
-          newInputState.alt = data.image.alt;
-        } else {
-          newInputState.alt = "";
-        }
 
-        if (data.zipCode == null) {
-          newInputState.zipCode = "";
+        if (data.zip == null) {
+          newInputState.zip = "";
         }
         delete newInputState.image;
         delete newInputState.likes;
@@ -72,7 +59,6 @@ const EditCardPage = () => {
       setInputsErrorsState(joiResponse);
 
       if (!joiResponse) {
-        //move to homepage
         await axios.put("/cards/" + id, inputState);
         toast.success("The changes were successfully saved");
         navigate(-1);
@@ -83,7 +69,6 @@ const EditCardPage = () => {
   };
 
   const handleCancelBtnClick = (ev) => {
-    //move to previous page
     navigate(-1);
   };
   const handleInputChange = (ev) => {
@@ -114,21 +99,6 @@ const EditCardPage = () => {
         <Typography component="h1" variant="h5">
           Edit card
         </Typography>
-        <Box
-          component="img"
-          sx={{
-            height: 233,
-            width: 350,
-            maxHeight: { xs: 180, md: 167 },
-            maxWidth: { xs: 250, md: 250 },
-          }}
-          alt={inputState.alt ? inputState.alt : ""}
-          src={
-            inputState.url
-              ? inputState.url
-              : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-          }
-        />
         <Box component="div" noValidate sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>

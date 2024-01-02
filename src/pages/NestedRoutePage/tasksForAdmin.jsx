@@ -1,11 +1,6 @@
-import { Fragment, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-
-import { counterActions } from "../../store/counter";
+import { useEffect, useState } from "react";
 import {
   Box,
-  Button,
   CircularProgress,
   Table,
   TableBody,
@@ -15,9 +10,6 @@ import {
   Typography,
   Grid,
 } from "@mui/material";
-import TableRowComponent from "../../components/TableRowComponent";
-import TableRowsComponent from "../../components/TableRowsComponent";
-
 import { toast } from "react-toastify";
 import axios from "axios";
 import useQueryParams from "../../hooks/useQueryParams";
@@ -28,27 +20,17 @@ const RP1 = () => {
   const [tasksArr, setTasksArr] = useState(null);
   let qparams = useQueryParams();
   useEffect(() => {
-    // בטעינת הדף, נבצע בקשת HTTP לשרת
     axios
       .get("/auth/users")
       .then((response) => {
-        // קבלנו את רשימת העובדים מהשרת
         setEmployees(response.data);
-        console.log("response.data", response.data);
       })
-      .catch((error) => {
-        console.error("Error fetching employees:", error);
-      });
+      .catch((error) => {});
   }, []);
   useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
     axios
       .get("/cards/tasks")
       .then(({ data }) => {
-        console.log("data", data);
         filterFunc(data);
       })
       .catch((err) => {
@@ -56,15 +38,9 @@ const RP1 = () => {
       });
   }, []);
   useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
     axios
       .get("/cards")
       .then((response) => {
-        // קבלנו את רשימת העובדים מהשרת
-        console.log("response.data!!!", response.data);
         setCustomers(response.data);
       })
       .catch((err) => {
@@ -80,9 +56,6 @@ const RP1 = () => {
       filter = qparams.filter;
     }
     if (!originaltasksArr && data) {
-      /*
-        when component loaded and states not loaded
-      */
       setOriginaltasksArr(data);
       setTasksArr(
         data.filter(
@@ -93,9 +66,6 @@ const RP1 = () => {
       return;
     }
     if (originaltasksArr) {
-      /*
-        when all loaded and states loaded
-      */
       let newOriginalCardsArr = JSON.parse(JSON.stringify(originaltasksArr));
       setTasksArr(
         newOriginalCardsArr.filter(
@@ -105,16 +75,7 @@ const RP1 = () => {
       );
     }
   };
-  const whoIsTheWorker = () => {
-    tasksArr.map((item) =>
-      employees.map((item2) => {
-        if (item2._id === item.id) {
-          console.log("item2.name", item2.name);
-          return item2.name;
-        }
-      })
-    );
-  };
+
   if (!tasksArr) {
     return <CircularProgress />;
   }
@@ -140,26 +101,6 @@ const RP1 = () => {
             </TableRow>
           </TableHead>
 
-          {/* {tasksArr.map((item) => (
-          <TableBody>
-            <TableRow>
-              <TableCell key={item.customerID + Date.now()}>
-                {item.customerID}
-              </TableCell>
-              <TableCell key={item.task + Date.now()}>{item.task}</TableCell>
-              <TableCell key={item.dateOpened + Date.now()}>
-                {item.dateOpened}
-              </TableCell>
-              <TableCell key={item.lastDateToDo + Date.now()}>
-                {item.lastDateToDo}
-              </TableCell>
-              <TableCell key={item.workerToDo + Date.now()}>
-{ employees.map((item2) =>
-      (item2._id === item.id) ?  item2.name : null}
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        ))} */}
           <TableBody>
             {tasksArr.map((item) => (
               <TableRow key={item._id}>
@@ -185,33 +126,8 @@ const RP1 = () => {
           </TableBody>
         </Table>
       </Grid>
-      {/* </TableContainer> */}
     </Box>
   );
-  //   const [txt, setTxt] = useState("");
-  //   const dispatch = useDispatch();
-  //   const handleAdd1 = () => {
-  //     dispatch(counterActions.add1());
-  //   };
-  //   const handleSub1 = () => {
-  //     dispatch(counterActions.sub1());
-  //   };
-  //   const handleInputChange = (e) => {
-  //     setTxt(e.target.value);
-  //   };
-  //   const handleAddClick = () => {
-  //     dispatch(counterActions.addNumber(txt));
-  //   };
-  //   return (
-  //     <Fragment>
-  //       <br></br>
-  //       <button onClick={handleAdd1}>+1</button>
-  //       <button onClick={handleSub1}>-1</button>
-  //       <input type="text" value={txt} onChange={handleInputChange} />
-  //       <button onClick={handleAddClick}>add</button>
-  //       <Link to="../rp2">to rp2</Link>
-  //     </Fragment>
-  //   );
 };
 
 export default RP1;

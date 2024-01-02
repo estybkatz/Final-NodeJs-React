@@ -1,22 +1,9 @@
-import { CircularProgress, Grid } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import CardComponent from "../components/CardComponent";
 import { toast } from "react-toastify";
-import useQueryParams from "../hooks/useQueryParams";
-import { useSelector } from "react-redux";
-import {
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardHeader,
-  CardContent,
-  Typography,
-  CardActions,
-  Box,
-  IconButton,
-} from "@mui/material";
+import { Card, CardHeader, CardContent, Typography, Box } from "@mui/material";
 import {
   Button,
   Table,
@@ -26,45 +13,26 @@ import {
   TableRow,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-//import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+
 const CostumerPrivtePage = () => {
-  const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [costumerData, setCostumerData] = useState(null);
   const [taskData, setTaskData] = useState([]);
   const [customers, setCustomers] = useState([]);
   const { id } = useParams();
-  const navigate = useNavigate();
-  let qparams = useQueryParams();
-  const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
-
     axios
       .get("auth/users/" + id)
-
       .then(({ data }) => {
-        console.log(data);
-        //   filterFunc(data);
         setCostumerData(data);
       })
-
       .catch((err) => {
         toast.error("Oops");
       });
   }, []);
   useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
     axios
       .get("/cards")
       .then((response) => {
-        // קבלנו את רשימת העובדים מהשרת
-        console.log("response.data!!!", response.data);
         setCustomers(response.data);
       })
       .catch((err) => {
@@ -72,27 +40,15 @@ const CostumerPrivtePage = () => {
       });
   }, []);
   useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
-
     axios
       .get("cards/tasks/" + id)
-
       .then(({ data }) => {
-        console.log(data);
-        //   filterFunc(data);
         setTaskData(data);
       })
-
       .catch((err) => {
-        console.log(id);
         toast.error("Oops2");
       });
   }, []);
-  console.log(taskData);
-
   const columns = [
     "customer name",
     "task to do",
@@ -100,7 +56,6 @@ const CostumerPrivtePage = () => {
     "last date to do",
     "worker to Do",
   ];
-
   if (!costumerData) {
     return <CircularProgress />;
   }
@@ -111,7 +66,6 @@ const CostumerPrivtePage = () => {
         <CardHeader
           title={costumerData.firstName}
           subheader={costumerData.lastName}
-          //   onClick={handleInfoBtnClick}
         ></CardHeader>
         <CardContent>
           <hr />
@@ -121,15 +75,7 @@ const CostumerPrivtePage = () => {
           <Typography variant="body1" color="white">
             {"Email: " + costumerData.email}
           </Typography>
-          {/* <Typography variant="body1" color="white">
-            {"ReceptionDateAtTheOffice: " + workerData.ReceptionDateAtTheOffice}
-          </Typography>
-          <Typography variant="body1" color="white">
-            {"clubMember: " + workerData.clubMember}
-          </Typography>
-          <Typography variant="body1" color="white">
-            {"BusinessDescription: " + workerData.BusinessDescription}
-          </Typography> */}
+
           <hr />
           <h2>tasks for the costumer</h2>
           <Button>
@@ -147,8 +93,7 @@ const CostumerPrivtePage = () => {
                 </TableRow>
               </TableHead>
               {taskData.map((item) => (
-                // <Grid item sm={6} xs={12} md={4} key={item._id + Date.now()}>
-                <TableBody>
+                <TableBody key={item._id}>
                   <TableRow>
                     <TableCell key={item.customerID + Date.now()}>
                       {customers.map((item2) =>
@@ -160,10 +105,10 @@ const CostumerPrivtePage = () => {
                     <TableCell key={item.task + Date.now()}>
                       {item.task}
                     </TableCell>
-                    <TableCell key={item.dateOpened + Date.now()}>
+                    <TableCell key={"open" + item.dateOpened + Date.now()}>
                       {item.dateOpened}
                     </TableCell>
-                    <TableCell key={item.lastDateToDo + Date.now()}>
+                    <TableCell key={"close" + item.lastDateToDo + Date.now()}>
                       {item.lastDateToDo}
                     </TableCell>
                     <TableCell key={item.workerToDo + Date.now()}>
@@ -171,7 +116,6 @@ const CostumerPrivtePage = () => {
                     </TableCell>
                   </TableRow>
                 </TableBody>
-                // </Grid>
               ))}
             </Table>
           </Box>

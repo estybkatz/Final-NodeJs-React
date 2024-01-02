@@ -1,22 +1,9 @@
-import { CircularProgress, Grid } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import CardComponent from "../components/CardComponent";
 import { toast } from "react-toastify";
-import useQueryParams from "../hooks/useQueryParams";
-import { useSelector } from "react-redux";
-import {
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardHeader,
-  CardContent,
-  Typography,
-  CardActions,
-  Box,
-  IconButton,
-} from "@mui/material";
+import { Card, CardHeader, CardContent, Typography, Box } from "@mui/material";
 import {
   Button,
   Table,
@@ -27,27 +14,17 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 const CostumerPrivtePage = () => {
-  const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardData, setCardData] = useState(null);
   const [taskData, setTaskData] = useState(null);
   const [customers, setCustomers] = useState([]);
   const [workersArr, setWorkersArr] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
-  let qparams = useQueryParams();
-  const payload = useSelector((bigPie) => bigPie.authSlice.payload);
-  useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
 
+  useEffect(() => {
     axios
       .get("cards/tasks/" + id)
-
       .then(({ data }) => {
-        console.log(data);
-        //   filterFunc(data);
         setTaskData(data);
       })
 
@@ -55,33 +32,20 @@ const CostumerPrivtePage = () => {
         toast.error("Oops2");
       });
   }, []);
-  console.log(taskData);
   useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
     axios
       .get("/auth/users")
       .then(({ data }) => {
-        console.log("data", data);
         setWorkersArr(data);
-        //filterFunc(data);
       })
       .catch((err) => {
         toast.error("Oops, Error retrieving data");
       });
   }, []);
   useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
     axios
       .get("/cards")
       .then((response) => {
-        // קבלנו את רשימת העובדים מהשרת
-        console.log("response.data!!!", response.data);
         setCustomers(response.data);
       })
       .catch((err) => {
@@ -89,17 +53,10 @@ const CostumerPrivtePage = () => {
       });
   }, []);
   useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
-
     axios
       .get("cards/" + id)
 
       .then(({ data }) => {
-        console.log(data);
-        //   filterFunc(data);
         setCardData(data);
       })
 
@@ -127,7 +84,6 @@ const CostumerPrivtePage = () => {
         <CardHeader
           title={cardData.firstName}
           subheader={cardData.lastName}
-          //   onClick={handleInfoBtnClick}
         ></CardHeader>
         <CardContent>
           <hr />
@@ -172,27 +128,29 @@ const CostumerPrivtePage = () => {
                   ))}
                 </TableRow>
               </TableHead>
-              {taskData.map((item) => (
-                // <Grid item sm={6} xs={12} md={4} key={item._id + Date.now()}>
-                <TableBody>
-                  <TableRow key={item + Date.now()}>
-                    <TableCell key={item.customerID + Date.now()}>
+
+              <TableBody key="taskBody">
+                {taskData.map((item) => (
+                  <TableRow key={item._id + Date.now()}>
+                    <TableCell key={item.customerID + item._id + Date.now()}>
                       {customers.map((item2) =>
                         item2._id === item.customerID
                           ? item2.firstName + " " + item2.lastName
                           : null
                       )}
                     </TableCell>
-                    <TableCell key={item.task + Date.now()}>
+                    <TableCell key={"task" + item.task + Date.now()}>
                       {item.task}
                     </TableCell>
-                    <TableCell key={item.dateOpened + Date.now()}>
+                    <TableCell key={"date open" + item.dateOpened + Date.now()}>
                       {item.dateOpened}
                     </TableCell>
-                    <TableCell key={item.lastDateToDo + Date.now()}>
+                    <TableCell
+                      key={"last date" + item.lastDateToDo + Date.now()}
+                    >
                       {item.lastDateToDo}
                     </TableCell>
-                    <TableCell key={item.workerToDo + Date.now()}>
+                    <TableCell key={"worker" + item.workerToDo + Date.now()}>
                       {workersArr.map((item2) =>
                         item2._id === item.workerToDo
                           ? item2.name.firstName + " " + item2.name.lastName
@@ -200,9 +158,8 @@ const CostumerPrivtePage = () => {
                       )}
                     </TableCell>
                   </TableRow>
-                </TableBody>
-                // </Grid>
-              ))}
+                ))}
+              </TableBody>
             </Table>
           </Box>
         </CardContent>

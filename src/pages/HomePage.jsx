@@ -3,18 +3,15 @@ import {
   Button,
   CircularProgress,
   Grid,
-  TableBody,
   TableCell,
-  Typography,
   TableHead,
   Table,
   TableRow,
 } from "@mui/material";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CardComponent from "../components/CardComponent";
-import StickyHeadTable from "../components/TableComponent";
 import { toast } from "react-toastify";
 import useQueryParams from "../hooks/useQueryParams";
 import { useSelector } from "react-redux";
@@ -22,15 +19,11 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ROUTES from "../routes/ROUTES";
 import TocIcon from "@mui/icons-material/Toc";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import TableRowComponent from "../components/TableRowComponent";
 import TableRowsComponent from "../components/TableRowsComponent";
-import Modal from "react-modal";
-import DoneIcon from "@mui/icons-material/Done";
 const HomePage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
   const [currentView, setCurrentView] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   let qparams = useQueryParams();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
@@ -54,17 +47,11 @@ const HomePage = () => {
       filter = qparams.filter;
     }
     if (!originalCardsArr && data) {
-      /*
-        when component loaded and states not loaded
-      */
       setOriginalCardsArr(data);
       setCardsArr(data.filter((card) => card.firstName.startsWith(filter)));
       return;
     }
     if (originalCardsArr) {
-      /*
-        when all loaded and states loaded
-      */
       let newOriginalCardsArr = JSON.parse(JSON.stringify(originalCardsArr));
       setCardsArr(
         newOriginalCardsArr.filter((card) => card.firstName.startsWith(filter))
@@ -76,7 +63,7 @@ const HomePage = () => {
   }, [qparams.filter]);
   const handleDeleteFromInitialCardsArr = async (id) => {
     try {
-      await axios.delete("/cards/" + id); // /cards/:id
+      await axios.delete("/cards/" + id);
       setCardsArr((newCardsArr) =>
         newCardsArr.filter((item) => item._id !== id)
       );
@@ -87,7 +74,7 @@ const HomePage = () => {
   };
   const handleEditFromInitialCardsArr = (id) => {
     const selectedCards = cardsArr.find((card) => card._id == id);
-    navigate(`/edit/${id}`, { state: { user_id: selectedCards.user_id } }); //localhost:3000/edit/123213
+    navigate(`/edit/${id}`, { state: { user_id: selectedCards.user_id } });
   };
 
   const handleMoreInformationFromInitialCardsArr = (id) => {
@@ -108,35 +95,26 @@ const HomePage = () => {
     navigate(ROUTES.CREATE);
   };
   const changeView = () => {
-    // if (viewCard) {
-    //   viewCard = false;
-    //   viewList = true;
-    //   setCurrentView(viewList);
-    //   // return (viewCard = false);
-    // } else {
-    //   viewCard = true;
-    //   viewList = false;
-    //   setCurrentView(viewCard);
-    //   // return (viewCard = true);
-    // }
     if (currentView) {
       setCurrentView(false);
-      // return (viewCard = false);
     } else {
       setCurrentView(true);
-      // return (viewCard = true);
     }
   };
-  const createWorker = () => {};
-  //function homepage -> homeComponent(view,data)
-  //function homeComponent return view? <cardComponent>->array :tableArray->array;
-  //
+
   return (
     <Box>
       {payload ? (
         <Box>
-          <h1>Cards page</h1>
-          <h3>Here you can find cards of all categories</h3>
+          <h1>Customers List</h1>
+          <h3>Here you can find all of the customers in the office</h3>
+          <img
+            src="https://images.pexels.com/photos/14853814/pexels-photo-14853814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="office"
+            width="1200vw"
+            height="300vh"
+          />
+
           <Button onClick={changeView}>
             <TocIcon />
             <DashboardIcon />
@@ -162,7 +140,6 @@ const HomePage = () => {
                     title={item.firstName}
                     subTitle={item.ReceptionDateAtTheOffice}
                     description={item.BusinessDescription}
-                    //img={item.image ? item.image.url : ""}
                     onDelete={handleDeleteFromInitialCardsArr}
                     onDeletefav={delete1}
                     onEdit={handleEditFromInitialCardsArr}
@@ -188,16 +165,9 @@ const HomePage = () => {
                     <TableCell>{"Email"}</TableCell>
                     <TableCell>{"club - member"}</TableCell>
                     <TableCell>{"link - to - card"}</TableCell>
-                    {/* {columns.map((item) => (
-            <TableCell key={item + Date.now()}>
-              <Typography>{item}</Typography>
-            </TableCell>
-          ))} */}
                   </TableRow>
                 </TableHead>
                 {cardsArr.map((item) => (
-                  //    return(
-
                   <TableRowsComponent
                     key={item._id + Date.now()}
                     Name={item.firstName}
@@ -206,7 +176,6 @@ const HomePage = () => {
                     clubMember={item.clubMember}
                     linkToCard={"link to card"}
                   />
-                  //   );
                 ))}
               </Table>
             </Grid>

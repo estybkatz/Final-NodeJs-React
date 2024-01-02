@@ -7,8 +7,7 @@ const permissionsMiddleware = require("../../middleware/permissionsMiddlewareCar
 const authmw = require("../../middleware/authMiddleware");
 const CustomError = require("../../utils/CustomError");
 const { logErrorToFile } = require("../../utils/fileLogger");
-const tasksServiceModel = require("../../model/taskService/taskService");
-//סעיף 1
+
 // get all cards all
 //http://localhost:8181/api/cards
 router.get("/", async (req, res) => {
@@ -20,7 +19,6 @@ router.get("/", async (req, res) => {
     res.status(400).json(err);
   }
 });
-//סעיף 2
 //my cards, registered
 //http://localhost:8181/api/cards/my-cards
 router.get(
@@ -31,7 +29,7 @@ router.get(
     try {
       const Cards = await cardsServiceModel.getAllCards();
       const myCards = Cards.filter((card) => card.user_id == req.userData._id);
-      console.log("32", myCards);
+
       if (myCards.length) res.json(myCards);
       else {
         res.status(200).json([]);
@@ -60,12 +58,10 @@ router.get(
     }
   }
 );
-//סעיף 3
 // all
 //http://localhost:8181/api/cards/:id
 router.get("/:id", async (req, res) => {
   try {
-    console.log(1);
     await cardsValidationService.idUserValidation(req.params.id);
     const cardFromDB = await cardsServiceModel.getCardById(req.params.id);
     if (!cardFromDB) throw new CustomError("There exists no card with the id");
@@ -76,8 +72,6 @@ router.get("/:id", async (req, res) => {
     res.status(400).json(err);
   }
 });
-
-//סעיף 4
 // create cards, biz only
 //http://localhost:8181/api/cards/createCustomer
 router.post(
@@ -86,6 +80,7 @@ router.post(
   permissionsMiddleware(true, true, false),
   async (req, res) => {
     try {
+      console.log(req.body);
       let card = await cardsValidationService.createCardValidation(req.body);
       let normalCard = await normalizeCard(req.body, req.userData._id);
       const dataFromMongoose = await cardsServiceModel.createCard(normalCard);
@@ -97,29 +92,6 @@ router.post(
     }
   }
 );
-// //http://localhost:8181/api/cards/tasks/:id
-// router.post("/tasks/:id", authmw, async (req, res) => {
-//   try {
-//     .log("req", req.params.id);
-//     let params = await cardsValidationService.idUserValidation(req.params.id);
-//     console.log("PARAMS", params);
-//     let task = await cardsValidationService.tasksValidation(req.body);
-//     // let normalCard = await normalizeCard(req.body, req.userData._id);
-//     let taskToCreate = {
-//       customerID: params,
-//       ...task,
-//     };
-//     console.log(taskToCreate);
-//     await tasksServiceModel.createNewTask(taskToCreate);
-
-//     res.json({ msg: "ok" });
-//   } catch (err) {
-//     logErrorToFile(err, 400);
-//     res.status(400).json(err);
-//   }
-// });
-
-//סעיף 5
 //edit
 // owner
 //http://localhost:8181/api/cards/:id
@@ -129,7 +101,6 @@ router.put(
   permissionsMiddleware(false, false, true),
   async (req, res) => {
     try {
-      console.log(12);
       await cardsValidationService.idUserValidation(req.params.id);
       await cardsValidationService.createCardValidation(req.body);
       await normalizeCard(req.body, req.userData._id);
@@ -151,8 +122,6 @@ router.put(
     }
   }
 );
-
-// bonus 1
 //edit biz num
 // admin
 //http://localhost:8181/api/cards/:id
@@ -183,13 +152,9 @@ router.put(
     }
   }
 );
-
-//סעיף 6
-
 //http://localhost:8181/api/cards/:id
 router.patch("/:id", authmw, async (req, res) => {
   try {
-    console.log(14);
     await cardsValidationService.idUserValidation(req.params.id);
     let card = await cardsServiceModel.findOne({ _id: req.params.id });
     const cardLikes = card.likes.find((id) => id === req.userData._id);
@@ -207,7 +172,6 @@ router.patch("/:id", authmw, async (req, res) => {
     return res.status(500).send(err);
   }
 });
-
 // admin or biz owner
 //http://localhost:8181/api/cards/:id
 router.delete(
@@ -217,8 +181,6 @@ router.delete(
   async (req, res) => {
     try {
       let num = 400;
-
-      console.log(15);
       await cardsValidationService.idUserValidation(req.params.id);
       num = 500;
       const cardFromDB = await cardsServiceModel.deleteCard(req.params.id);
@@ -233,5 +195,4 @@ router.delete(
     }
   }
 );
-
 module.exports = router;

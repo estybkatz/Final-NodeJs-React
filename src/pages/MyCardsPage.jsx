@@ -16,15 +16,9 @@ const MyCardsPage = () => {
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
 
   useEffect(() => {
-    /*
-      useEffect cant handle async ()=>{}
-      this is why we use the old promise way
-    */
     axios
       .get("/cards/my-cards")
       .then(({ data }) => {
-        console.log("data", data);
-
         filterFunc(data);
       })
       .catch(() => {
@@ -40,9 +34,6 @@ const MyCardsPage = () => {
       filter = qparams.filter;
     }
     if (!originalCardsArr && data) {
-      /*
-        when component loaded and states not loaded
-      */
       setOriginalCardsArr(data);
       setCardsArr(
         data.filter(
@@ -53,9 +44,6 @@ const MyCardsPage = () => {
       return;
     }
     if (originalCardsArr) {
-      /*
-        when all loaded and states loaded
-      */
       let newOriginalCardsArr = JSON.parse(JSON.stringify(originalCardsArr));
       setCardsArr(
         newOriginalCardsArr.filter(
@@ -70,7 +58,7 @@ const MyCardsPage = () => {
   }, [qparams.filter]);
   const handleDeleteFromInitialCardsArr = async (id) => {
     try {
-      await axios.delete("/cards/" + id); // /cards/:id
+      await axios.delete("/cards/" + id);
       setCardsArr((newCardsArr) =>
         newCardsArr.filter((item) => item._id !== id)
       );
@@ -81,7 +69,7 @@ const MyCardsPage = () => {
   };
   const handleEditFromInitialCardsArr = (id) => {
     const selectedCards = cardsArr.find((card) => card._id == id);
-    navigate(`/edit/${id}`, { state: { user_id: selectedCards.user_id } }); //localhost:/edit/123213
+    navigate(`/edit/${id}`, { state: { user_id: selectedCards.user_id } });
   };
   const handleMoreInformationFromInitialCardsArr = (id) => {
     navigate(`/MInfo/${id}`);
@@ -109,7 +97,7 @@ const MyCardsPage = () => {
         </Box>
       ) : (
         <Box>
-          <h1>MyCards page</h1>
+          <h1>My Customers page</h1>
           <Button onClick={createCard}>
             <AddCircleIcon />
           </Button>
@@ -126,7 +114,6 @@ const MyCardsPage = () => {
                   title={item.firstName}
                   subTitle={item.ReceptionDateAtTheOffice}
                   description={item.BusinessDescription}
-                  //img={item.image ? item.image.url : ""}
                   onDelete={handleDeleteFromInitialCardsArr}
                   onDeletefav={delete1}
                   onEdit={handleEditFromInitialCardsArr}

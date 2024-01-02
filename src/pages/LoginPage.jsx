@@ -9,9 +9,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Alert from "@mui/material/Alert";
 import CachedIcon from "@mui/icons-material/Cached";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { sizing } from "@mui/system";
 
 import ROUTES from "../routes/ROUTES";
 import validateLoginSchema from "../validation/loginValidation";
@@ -55,9 +54,7 @@ const LoginPage = () => {
       }
       const { data } = await axios.post("auth/users/login", inputState);
       localStorage.setItem("token", data.token);
-      console.log("hello3");
       loggedIn();
-      //move to homepage
       navigate(ROUTES.HOME);
     } catch {
       toast.error(

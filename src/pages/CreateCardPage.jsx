@@ -40,18 +40,16 @@ const CreateCardPage = () => {
       setInputsErrorsState(joiResponse);
 
       if (!joiResponse) {
-        //move to homepage
         await axios.post("/cards/createCustomer", inputState);
         toast.success("A new business card has been created");
         navigate(-1);
       }
     } catch {
-      toast.error("errrrrrror Your new card didn't saved");
+      toast.error("error Your new card didn't save");
     }
   };
 
   const handleCancelBtnClick = (ev) => {
-    //move to homepage
     navigate(ROUTES.HOME);
   };
   const handleInputChange = (ev) => {
@@ -119,21 +117,7 @@ const CreateCardPage = () => {
         <Typography component="h2" variant="h5">
           Here you can create a new cards
         </Typography>
-        <Box
-          component="img"
-          sx={{
-            height: 233,
-            width: 350,
-            maxHeight: { xs: 233, md: 167 },
-            maxWidth: { xs: 350, md: 250 },
-          }}
-          alt={inputState.alt ? inputState.alt : ""}
-          src={
-            inputState.url
-              ? inputState.url
-              : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-          }
-        />
+
         <Box component="div" noValidate sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             {keys.map((item) => (
@@ -195,5 +179,4 @@ const CreateCardPage = () => {
     </Container>
   );
 };
-
 export default CreateCardPage;

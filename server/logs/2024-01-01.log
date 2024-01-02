@@ -1,0 +1,56 @@
+Timestamp: 2024-01-01T21:19:49.640Z
+Status Code: 400
+Error: ValidationError: The phone number must start with 0 and contain only numbers. You can put - after the third digit and it must contain 7-12 digits
+
+Timestamp: 2024-01-01T21:36:22.406Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2024-01-01T21:37:16.396Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2024-01-01T21:38:34.554Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2024-01-01T21:38:47.372Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2024-01-01T21:38:51.165Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2024-01-01T21:42:25.476Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2024-01-01T21:42:34.041Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2024-01-01T21:44:03.710Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2024-01-01T21:46:51.822Z
+Status Code: 403
+Error: you do not have sufficient permissions for this action
+
+Timestamp: 2024-01-01T21:48:22.780Z
+Status Code: 401
+Error: must provide userData
+
+Timestamp: 2024-01-01T21:49:36.111Z
+Status Code: 400
+Error: ValidationError: "dateOpened" length must be at least 9 characters long
+
+Timestamp: 2024-01-01T21:56:47.659Z
+Status Code: 400
+Error: ValidationError: "dateOpened" length must be at least 9 characters long
+
+Timestamp: 2024-01-01T21:58:15.924Z
+Status Code: 400
+Error: ValidationError: "lastDateToDo" length must be less than or equal to 10 characters long
+

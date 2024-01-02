@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store/auth";
 import jwt_decode from "jwt-decode";
@@ -10,14 +9,9 @@ const useLoggedIn = () => {
       if (!token) {
         return;
       }
-      // await axios.get("auth/users/userInfo");
       const payload = jwt_decode(token);
       dispatch(authActions.login(payload));
-    } catch (err) {
-      console.log(err);
-      //server error
-      //invalid token
-    }
+    } catch (err) {}
   };
 };
 

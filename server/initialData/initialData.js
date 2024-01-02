@@ -22,13 +22,11 @@ const initialData = async () => {
       user.password = await hashService.generateHash(user.password);
       user = normalizeUser(user);
       user_id = await usersService.registerUser(user);
-      //  console.log(user);
     }
     user_id = user_id._id + "";
     for (let card of cardsData) {
       card = await normalizeCard(card, user_id);
       await cardsService.createCard(card);
-      //console.log(card);
     }
   } catch (err) {
     console.log("err from initial", err);

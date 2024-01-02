@@ -24,7 +24,6 @@ connectToDBService()
  */
 var port = normalizePort(process.env.PORT || "8181");
 
-//var port = 8181;
 app.set("port", port);
 
 /**

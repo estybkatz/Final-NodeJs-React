@@ -27,7 +27,7 @@ const verifyToken = (token) =>
 // Assuming you have a token that looks like this:
 // const token = req.headers[x - auth - token];
 
-// // Decode the token and extract the ID
+//  Decode the token and extract the ID
 // const decodedToken = jwt.verify(token, "your-secret-key");
 // const id = decodedToken.id;
 

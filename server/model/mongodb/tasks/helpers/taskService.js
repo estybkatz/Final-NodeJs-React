@@ -12,16 +12,11 @@ const getCustomerName = () => {
   return Card.find({}, { firstName: 1, lastName: 1, _id: 1 });
 };
 const getCustomerTasks = (customerID) => {
-  console.log("hlooooooo");
-  console.log(customerID);
   return Task.find({ customerID: customerID, done: false });
 };
 
 const getWorkerTasks = (workerToDo) => {
-  //console.log("hloooooooworker");
-  //console.log("workerTodo", workerTodo);
   return Task.find({ workerToDo: workerToDo, done: false });
-  //const task = Task.filter((item) => item.workerTodo === workerTodo);
 };
 
 const updateTask = (id, taskToUpdate) => {
@@ -50,4 +45,3 @@ module.exports = {
   getMyTasks,
   getMyDoneTasks,
 };
-//workerTodo

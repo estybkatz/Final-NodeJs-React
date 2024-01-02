@@ -6,17 +6,10 @@ const apiRouter = require("./routes/api");
 const initialData = require("./initialData/initialData");
 const chalk = require("chalk");
 const morgan = require("morgan");
-//
+
 const app = express();
 
 app.use(cors());
-// app.use(
-//   cors({
-//     origin: ["http://authorizedaddress"],
-
-//     optionsSuccessStatus: 200,
-//   })
-// );
 
 app.use(
   morgan((tokens, req, res) => {

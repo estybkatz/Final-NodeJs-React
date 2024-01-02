@@ -51,7 +51,6 @@ const Footer = () => {
             component={Link}
             to="/about"
           />
-          {/* <Box> */}
           {isLoggedIn ? (
             <BottomNavigationAction
               label="My Tasks"
@@ -65,10 +64,10 @@ const Footer = () => {
 
           {isLoggedIn && (payload.biz || payload.isAdmin) ? (
             <BottomNavigationAction
-              label="My Cards"
+              label="My Customers"
               icon={<CoPresentTwoToneIcon />}
               component={Link}
-              to="/myCards"
+              to="/myCustomers"
             />
           ) : (
             ""

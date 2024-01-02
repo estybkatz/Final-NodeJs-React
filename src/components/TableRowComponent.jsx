@@ -68,7 +68,6 @@ const TableRowComponent = ({
   };
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      {/* <TableContainer sx={{ maxHeight: 440 }}> */}
       <Table stickyHeader aria-label="sticky table">
         <TableHead>
           <TableRow>
@@ -79,17 +78,7 @@ const TableRowComponent = ({
             ))}
           </TableRow>
         </TableHead>
-        {/* <TableBody>
-            <TableCell>{Name}</TableCell>
-            <TableCell>{phone}</TableCell>
-            <TableCell>{email}</TableCell>
-            <TableCell>{clubMember}</TableCell>
-            <Button>
-              <TableCell>{linkToCard}</TableCell>
-            </Button>
-          </TableBody> */}
       </Table>
-      {/* </TableContainer> */}
     </Paper>
   );
 };

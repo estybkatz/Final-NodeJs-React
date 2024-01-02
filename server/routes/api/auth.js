@@ -17,7 +17,6 @@ const permissionsMiddlewareUser = require("../../middleware/permissionsMiddlewar
 const { logErrorToFile } = require("../../utils/fileLogger");
 const User = require("../../model/mongodb/users/Users");
 
-//סעיף 1
 //register
 //http://localhost:8181/api/auth/users
 router.post("/users/register", async (req, res) => {
@@ -33,7 +32,6 @@ router.post("/users/register", async (req, res) => {
   }
 });
 
-//סעיף 2
 //http://localhost:8181/api/auth/users/login
 router.post("/users/login", async (req, res) => {
   let num = 401;
@@ -82,39 +80,27 @@ router.post("/users/login", async (req, res) => {
   }
 });
 
-//סעיף 3
 //get all users,admin
 //http://localhost:8181/api/auth/users
-router.get(
-  "/users",
-  authmw,
-  permissionsMiddlewareUser(false, true, false),
-  async (req, res) => {
-    try {
-      const userData = await usersServiceModel.getAllUsers();
-      res.json(userData);
-    } catch (err) {
-      logErrorToFile(err, 500);
-      res.status(500).json(err);
-    }
+router.get("/users", authmw, async (req, res) => {
+  try {
+    const userData = await usersServiceModel.getAllUsers();
+    res.json(userData);
+  } catch (err) {
+    logErrorToFile(err, 500);
+    res.status(500).json(err);
   }
-);
+});
 //localhost:8181/api/auth/users/userInfo
 router.get("/users/userInfo/:id", async (req, res) => {
   try {
-    console.log("hello");
-
-    // let user = req.user;
-    console.log(req.params.id);
-    //User.findById(user._id);
     let user = await usersServiceModel.getUserdById(req.params.id);
     //delete user.password;
     delete user.timeStamps;
     delete user.blockedUntil;
     delete user.triesTimes;
     delete user.createdAt;
-    console.log(user);
-    console.log("hello2");
+
     res.send(user);
   } catch (err) {
     logErrorToFile(err, 400);
@@ -129,12 +115,10 @@ router.get(
 
   async (req, res) => {
     try {
-      console.log("req", req.params.id);
       let params = await idUserValidation(req.params.id);
-      console.log("PARAMSUser", params);
 
       let workerPrivateTasks = await taskServiceModel.getWorkerTasks(params);
-      console.log("workerPrivateTasks", workerPrivateTasks);
+
       res.json(workerPrivateTasks);
     } catch (err) {
       logErrorToFile(err, 400);
@@ -142,7 +126,7 @@ router.get(
     }
   }
 );
-//סעיף 4
+
 //Get user,The registered user or admin
 //http://localhost:8181/api/auth/users/:id
 router.get(
@@ -165,7 +149,6 @@ router.get(
   }
 );
 
-//סעיף 5
 //Edit user
 //http://localhost:8181/api/auth/users/:id
 router.put(
@@ -178,16 +161,7 @@ router.put(
       await idUserValidation(req.params.id);
       await profileValidation(req.body);
       num = 500;
-      // req.body.password = await hashService.generateHash(req.body.password);
-      // if (req.body.password) num = 400;
-      // req.body = normalizeUser(req.body);
-      // if (req.body.timeStamps || req.body.blockedUntil) {
-      //   num = 403;
-      //   throw new CustomError(
-      //     "you are not allowed to edit timeStamps or blockedUntil"
-      //   );
-      // }
-      // num = 500;
+
       const userUpdate = await usersServiceModel.updateUser(
         req.params.id,
         req.body
@@ -201,7 +175,6 @@ router.put(
   }
 );
 
-//סעיף 6
 //Edit is biz user
 //http://localhost:8181/api/auth/users/:id
 router.patch(
@@ -229,7 +202,6 @@ router.patch(
   }
 );
 
-//סעיף 7
 //delete
 //http://localhost:8181/api/auth/users/:id
 router.delete(

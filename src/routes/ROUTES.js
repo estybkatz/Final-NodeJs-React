@@ -8,7 +8,7 @@ const ROUTES = {
   LOGOUT: "/logout",
   FAV: "/favCards",
   CREATE: "/create",
-  MYCARDS: "/myCards",
+  MYCARDS: "/myCustomers",
   SANDBOX: "/managementInterface",
   WORKER: "/worker/:id",
   CREATETASK: "/createTask",
